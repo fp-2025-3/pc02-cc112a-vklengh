@@ -29,7 +29,7 @@ void derivadaK(const double *coef, //
 // Complete la función auxiliar para imprimir un polinomio
 void imprimirPolinomio(const double *p, int grado) {
   int exp = grado;
-  for (const double *i = p+grado; i >= p; i--) {
+  for (const double *i = p + grado; i >= p; i--) {
     if (*i != 0) {
       if (exp == 0) {
         cout << *i << " ";
@@ -59,10 +59,10 @@ int main() {
 
   int k = 2; // derivada de orden 2
 
-  cout << "Polinomio original:" <<endl;
+  cout << "Polinomio original:" << endl;
   imprimirPolinomio(coef, 3);
   derivadaK(coef, grado, k, resultado, gradoResultado);
-  cout << "Derivada de orden: "<<k <<endl;
+  cout << "Derivada de orden " << k << ":" << endl;
   imprimirPolinomio(resultado, gradoResultado);
   // Llamar a su funcion derivadaK
 
@@ -71,29 +71,3 @@ int main() {
 
   return 0;
 }
-
-void imprimir2(const int *inicio, const int *fin) {
-  int exp = 0;
-  for (const int *p = inicio; p < fin; p++) {
-    if (*p != 0) {
-      if (exp == 0) {
-        cout << *p << " ";
-      } else if (exp == 1) {
-        cout << *p << "x ";
-      } else {
-        cout << *p << "x^" << exp;
-      }
-      if (p != fin - 1) {
-        cout << " + ";
-        // if (*p >= 0) {
-        //   cout << " + ";
-        // } else {
-        //   cout << " ";
-        // }
-      }
-      exp++;
-    }
-  }
-  cout << endl;
-}
-

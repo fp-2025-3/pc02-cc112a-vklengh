@@ -95,10 +95,9 @@ int main() {
   int *fin = A + 7;
 
   int clave = 13;
-  bool (*equivale)(int, int);
-  cout << " Arreglo: ";
+  cout << "Arreglo: ";
   imprimirArray(inicio, fin);
-  cout << " Clave: " << clave << endl;
+  cout << "Clave: " << clave << endl;
 
   int *pbusc = buscar(inicio, fin, igual, clave);
   // Imprima el arreglo

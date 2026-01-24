@@ -28,6 +28,7 @@ void picos(int (*inicio)[MAX_COLS], int (*fin)[MAX_COLS]) {
     for (int *col = *fila; col < *fila + MAX_COLS; col++) {
       int valor = *col;
       bool esPico = true;
+      bool esMayorAbs = false;
       int f = fila - inicio;
       int c = col - *fila;
       // Buscar en los bordes del elemento es igual a tomar combinaciones de 
@@ -50,15 +51,19 @@ void picos(int (*inicio)[MAX_COLS], int (*fin)[MAX_COLS]) {
               continue;
             }
 
-            if (valor < *(*(inicio + nf) + nc)) { // Si valor es menor o igual rompe
+            int vecino =*(*(inicio + nf) + nc);  // Si valor es menor o igual rompe
+            if (valor < vecino) { // Si valor es menor o igual rompe
               esPico = false; // bandera para romper los dos for loops
               break;
+            }
+            if (valor > vecino){
+                esMayorAbs = true;
             }
 
           }
         }
       }
-      if (esPico) {
+      if (esPico and esMayorAbs) {
         cout << "Pico en : (" <<fi<<","<<co<<"): " << valor << endl;
       }
       co++;
