@@ -16,7 +16,9 @@ void imprimirMatriz(int (*inicio)[MAX_COLS], int (*fin)[MAX_COLS]) {
 
 int subMatrizSuma(int (*inicio)[MAX_COLS], int i1, int j1, int i2, int j2) {
   // segun las instrucciones del examen se deben especificar las posiciones
-  // (i1,j1) y (i2,j2) en la funcion
+  // (i1,j1) y (i2,j2) en la funcion, ademas del puntero al inicio de la matriz
+  // por lo que se usara las posiciones i,j en la aritmetica de punteros
+  // para determinar las posiciones de la submatriz
 
   int suma = 0;
   for (int (*fila)[MAX_COLS] = inicio + i1; fila <= inicio + i2; fila++) {
