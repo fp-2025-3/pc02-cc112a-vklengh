@@ -87,13 +87,13 @@ int main() {
 
   char nombre[10];
   int edad;
-  // cout << "Ingrese su edad: ";
-  // cin >> edad;
-  // // Borrar el buffer
-  // cin.ignore();
-  // cout << endl;
-  // cout << "Ingrese su nombre: ";
-  // cin.getline(nombre, 10);
+  cout << "Ingrese su edad: ";
+  cin >> edad;
+  // Borrar el buffer
+  cin.ignore();
+  cout << endl;
+  cout << "Ingrese su nombre: ";
+  cin.getline(nombre, 10);
   char cad[100] = "Fundamentos de ";
   cout << my_strlen(cad) << endl;
   char ncad[100] = "programacion";
