@@ -1,5 +1,5 @@
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 using namespace std;
 
 const int MAX_COLS = 5;
@@ -23,7 +23,8 @@ int abs(int a) {
 
 void picos(int (*inicio)[MAX_COLS], int (*fin)[MAX_COLS]) {
   int filas = fin - inicio;
-  int fi = 0, co=0;  
+  int fi = 0, co = 0;
+  bool primer_pico = false;
   for (int (*fila)[MAX_COLS] = inicio; fila < fin; fila++) {
     for (int *col = *fila; col < *fila + MAX_COLS; col++) {
       int valor = *col;
@@ -31,7 +32,7 @@ void picos(int (*inicio)[MAX_COLS], int (*fin)[MAX_COLS]) {
       bool esMayorAbs = false;
       int f = fila - inicio;
       int c = col - *fila;
-      // Buscar en los bordes del elemento es igual a tomar combinaciones de 
+      // Buscar en los bordes del elemento es igual a tomar combinaciones de
       // indices de orden relativo
       //
       //          [-1,0]
@@ -51,25 +52,32 @@ void picos(int (*inicio)[MAX_COLS], int (*fin)[MAX_COLS]) {
               continue;
             }
 
-            int vecino =*(*(inicio + nf) + nc);  // Si valor es menor o igual rompe
-            if (valor < vecino) { // Si valor es menor o igual rompe
-              esPico = false; // bandera para romper los dos for loops
+            int vecino =
+                *(*(inicio + nf) + nc); // Si valor es menor o igual rompe
+            if (valor < vecino) {       // Si valor es menor o igual rompe
+              esPico = false;           // bandera para romper los dos for loops
               break;
             }
-            if (valor > vecino){
-                esMayorAbs = true;
+            if (valor > vecino) {
+              esMayorAbs = true;
             }
-
           }
         }
       }
+      if (!primer_pico and esPico) {
+        cout << "Elementos pico:" << endl;
+        primer_pico = true;
+      }
       if (esPico and esMayorAbs) {
-        cout << "Pico en : (" <<fi<<","<<co<<"): " << valor << endl;
+        cout << "Pico en : (" << fi << "," << co << "): " << valor << endl;
       }
       co++;
     }
     fi++;
     co = 0;
+  }
+  if (!primer_pico) {
+    cout << "No hay elementos pico" << endl;
   }
 }
 
@@ -78,6 +86,7 @@ int main() {
       {3, 3, 3, 3, 3}, {3, 4, 4, 2, 3}, {3, 4, 5, 4, 3}, {3, 3, 3, 3, 3}};
   int (*inicio)[MAX_COLS] = M;
   int (*fin)[MAX_COLS] = M + MAX_FILAS;
+  cout << "Matriz:" << endl;
   imprimirMatriz(inicio, fin);
   picos(inicio, fin);
   return 0;
