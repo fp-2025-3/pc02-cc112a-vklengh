@@ -25,28 +25,33 @@ int *buscar(
 // salida
 bool igual(int a, int b) { return a == b; }
 
-int abs(int a){
-    if (a>0){
-        a = -a;
-    }
-    return a;
+int abs(int a) {
+  if (a > 0) {
+    a = -a;
+  }
+  return a;
 }
 bool mismaParidad(int a, int b) {
   int resA = abs(a) % 2; // Tomar abs ya que puede retornar -1 el modulo
   int resB = abs(b) % 2;
-  if (resA == resB){
+  if (resA == resB) {
     return true;
   } else {
     return false;
   }
 }
 bool divideA(int a, int b) {
-  if (b % a == 0) {
-    return true;
-  } else {
+  if (a == 0) {
     return false;
+  } else {
+    if (b % a == 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
+
 int cantDigitos(int a) {
   int dig = 0;
   while (a != 0) {
