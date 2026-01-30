@@ -5,4 +5,4 @@
 
 ### Tarea problema 03:
 
-![alt text]
+![alt text](https://github.com/fp-2025-3/pc02-cc112a-vklengh/blob/main/semana03/tarea/assets/tarea.png)
