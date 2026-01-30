@@ -28,8 +28,9 @@ int main() {
   cout << "Cantidad de palabras cortas: " << nc << endl;
   cout << largas[0] << endl;
   cout << largas[4] << endl;
+
   ordenar(largas, nl);
-  cout << largas[0] << endl;
+  ordenar(cortas, nc);
 
   return 0;
 }
@@ -100,15 +101,18 @@ int comparar_palabras(const char *a, const char *b) {
     return 0;
   }
 }
-void ordenar(char *v[], int n) {
 
-  char temp[100];
+void my_strcpy(char **dest, char **source) {
+  char *temp= *dest;
+  *dest=*source;
+  *source=temp;
+}
+
+void ordenar(char *v[], int n) {
   for (int i = 0; i < n - 1; i++) {
     for (int j = i + 1; j < n; j++) {
       if (comparar_palabras(v[i], v[j]) > 0) {
-        strcpy(temp, v[i]);
-        strcpy(v[i], v[j]);
-        strcpy(v[j], temp);
+          my_strcpy(&v[i], &v[j]);
       }
     }
   }
