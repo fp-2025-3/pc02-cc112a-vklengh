@@ -7,11 +7,16 @@ int convertir_multiple_digito(int primero, int segundo) {
 }
 
 bool hallar_suma(int *digitos, int valor, int n) {
-  for (int i = 0; i < n - 1; i++) {
-    for (int j = i + 1; j < n; j++) {
-      if (*(digitos + i) + *(digitos + j) == valor) {
-        return true;
-      }
+  int *izq = digitos;
+  int *der = digitos + n - 1;
+  while (izq < der) {
+    int suma = *izq + *der;
+    if (suma == valor) {
+      return true;
+    } else if (suma < valor) {
+      izq++;
+    } else {
+      der--;
     }
   }
   return false;
