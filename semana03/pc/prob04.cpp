@@ -80,7 +80,8 @@ void imprimir(const char *texto, char **indice, int n) {
   for (char **p = indice; p < indice + n; p++) {
     cout <<left<<setw(25)<< *p <<left<<setw(5)<<""<<"(posicion " << *p - texto << ")" << endl;
     // SETW si muesta correctamente, solo que este funciona despues del primer 
-    // elemento del puntero, por lo que se tiene que tiene que colocar antes
+    // elemento del puntero, por lo que se tiene que colocar antes
     // para que funcione correctamente y muestre una separacion uniforme
+    // y especificar que el setw funcione a la izquierda
   }
 }
