@@ -78,7 +78,9 @@ void ordenarIndice(char **indice, int n) {
 
 void imprimir(const char *texto, char **indice, int n) {
   for (char **p = indice; p < indice + n; p++) {
-    const char *espacios = " ";
-    cout << *p << espacios << "(posicion " << *p - texto << ")" << endl;
+    cout <<left<<setw(25)<< *p <<left<<setw(5)<<""<<"(posicion " << *p - texto << ")" << endl;
+    // SETW si muesta correctamente, solo que este funciona despues del primer 
+    // elemento del puntero, por lo que se tiene que tiene que colocar antes
+    // para que funcione correctamente y muestre una separacion uniforme
   }
 }
