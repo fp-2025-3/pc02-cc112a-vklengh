@@ -77,7 +77,7 @@ int main() {
   // ASCII 9=57
 
   int cant_numeros = obtener_numero(num, n, digitos);
-  cout << "texto: " << num << endl;
+  cout <<R"(texto: ")" << num <<R"(")"<< endl;
   imprimir(digitos, 15, cant_numeros);
   imprimir(digitos, 10, cant_numeros);
   return 0;
