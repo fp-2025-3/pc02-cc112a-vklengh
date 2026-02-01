@@ -5,10 +5,9 @@
 
 ## SALIDAS DEL COMPILADOR
 
-
 ### Pregunta 1:
 
-![alt text](assets/pregunta01.png)
+![alt text](assets/pregunta01.png?)
 
 ### Pregunta 2:
 
