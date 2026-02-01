@@ -5,6 +5,7 @@
 
 ## SALIDAS DEL COMPILADOR
 
+
 ### Pregunta 1:
 
 ![alt text](assets/pregunta01.png)
