@@ -2,9 +2,11 @@
 ### Codigo: 20255514D
 
 ### Acualizaciones:
-#### 2. **Solucionario de la PC 03**
-[Link al solucionario](semana03/pc)
+#### 2. **Semana 4**
+[Teoria semana 04](semana04/teoria)
 
-#### 1. **Tarea de la semana 03**
-[Link a la tarea](semana03/tarea)
+#### 1. **Semana 3**
+[Solucionario PC03](semana03/pc)
+
+[Tarea semana 03](semana03/tarea)
 
