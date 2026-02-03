@@ -2,10 +2,32 @@
 
 using namespace std;
 
+void leerEstudiantes(int &n);
+float *reservarMemoria(int n);
+void leerNotas(int n, float *notas);
+void calculoNotas(int n, float *notas);
+void redimensionarEstudiantes(int &k, int &n, float *&notas);
+void liberarMemoria(float *&notas);
+
+int main() {
+  int n, k;
+  float *notaEstudiantes = nullptr;
+  leerEstudiantes(n);
+  notaEstudiantes = reservarMemoria(n);
+  leerNotas(n, notaEstudiantes);
+  calculoNotas(n, notaEstudiantes);
+  redimensionarEstudiantes(k, n, notaEstudiantes);
+  leerNotas(k, notaEstudiantes + n - k);
+  cout << "Cantidad de estudiantes: " << n << endl;
+  calculoNotas(n, notaEstudiantes);
+  liberarMemoria(notaEstudiantes);
+  return 0;
+}
 void leerEstudiantes(int &n) {
   cout << "Ingrese el numero de estudiantes: " << endl;
   cin >> n;
 }
+
 float *reservarMemoria(int n) { return new float[n]; }
 
 void leerNotas(int n, float *notas) {
@@ -47,22 +69,7 @@ void redimensionarEstudiantes(int &k, int &n, float *&notas) {
   n += k;
 }
 
-void liberarMemoria(float *&notas){
-    delete [] notas;
-    notas = nullptr;
-}
-
-int main() {
-  int n, k;
-  float *notaEstudiantes = nullptr;
-  leerEstudiantes(n);
-  notaEstudiantes = reservarMemoria(n);
-  leerNotas(n, notaEstudiantes);
-  calculoNotas(n, notaEstudiantes);
-  redimensionarEstudiantes(k, n, notaEstudiantes);
-  leerNotas(k, notaEstudiantes+n-k);
-  cout << "Cantidad de estudiantes: "<< n << endl;
-  calculoNotas(n, notaEstudiantes);
-  liberarMemoria(notaEstudiantes);
-  return 0;
+void liberarMemoria(float *&notas) {
+  delete[] notas;
+  notas = nullptr;
 }
