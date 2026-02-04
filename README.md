@@ -3,6 +3,8 @@
 
 ### Acualizaciones:
 #### 2. **Semana 4**
+[Laboratorio semana 04](semana04/lab)
+
 [Teoria semana 04](semana04/teoria)
 
 #### 1. **Semana 3**
