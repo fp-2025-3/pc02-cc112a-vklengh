@@ -1,18 +1,8 @@
 #include <iostream>
-
 #include <climits>
 
 using namespace std;
 
-void imprimirSegmento(int arr[], int ini, int fin) {
-  cout << "[";
-  for (int k = ini; k <= fin; k++) {
-    cout << arr[k];
-    if (k < fin)
-      cout << " ";
-  }
-  cout << "]";
-}
 int costoMaximoConSalidas(int arr[], int n, int pos, int cantLlamadas) {
   // Caso base
   if (pos == n) {

@@ -86,16 +86,17 @@ bool esFilaFuertementeDominante(int (*M)[N], int f, bool esDominante) {
 
 void imprimir(int (*M)[N]) {
 
-  cout << "Fila         Dominante Estricta        Fuertemente Dominante"
+  cout << setw(15) << left << "Fila" << setw(15) << right
+       << "Dominante Estricta" << setw(30) << right << "Fuertemente Dominante"
        << endl;
   cout << "---------------------------------------------------------" << endl;
   for (int i = 0; i < N; i++) {
     bool esDominante = esFilaDominanteEstricta(M, i);
     bool esFilaFuerte = esFilaFuertementeDominante(M, i, esDominante);
     if (esDominante) {
-      cout << i << setw(15) << "SI" << setw(30);
+      cout << setw(15) << left << i << setw(28) << "SI" << right ;
     } else {
-      cout << i << setw(15) << "NO" << setw(30);
+      cout << setw(15) << left << i << setw(28) << "NO" << right ;
     }
     if (esFilaFuerte) {
       cout << "SI" << endl;
