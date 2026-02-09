@@ -3,6 +3,8 @@
 
 ### Acualizaciones:
 #### 2. **Semana 4**
+[Solucionario Examen Parcial](semana04/parcial)
+
 [Laboratorio semana 04](semana04/lab)
 
 [Teoria semana 04](semana04/teoria)
