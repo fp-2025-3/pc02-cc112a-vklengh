@@ -4,7 +4,8 @@ using namespace std;
 const char texto1[] = "Codigo";
 const char texto2[] = "Promedio";
 
-void inicializar_estudiantes(int *&codigo, float *&promedio, int n, int inicial) {
+void inicializar_estudiantes(int *&codigo, float *&promedio, int n,
+                             int inicial) {
   int *temp_cod = new int[n];
   float *temp_prom = new float[n];
   for (int i = 0; i < n; i++) {
@@ -53,8 +54,8 @@ void agregar_estudiantes(int *&codigo, float *&promedio, int &n, int inicial,
 void EliminarMemoria(int *&codigo, float *&promedio) {
   delete[] codigo;
   delete[] promedio;
-  codigo= nullptr;
-  promedio=nullptr;
+  codigo = nullptr;
+  promedio = nullptr;
 }
 
 int eliminarEstudiantes(int *&codigo, float *&promedio, int final) {
@@ -94,7 +95,7 @@ void imprimir(int *codigo, float *promedio, int inicial, int adicional) {
 int main() {
   int n; // tamano de arreglo
   int n_inicial, n_extra;
-  int n1,n2,nf;
+  int n1, n2, nf;
   cout << "Ingrese el tamanio del arreglo: ";
   cin >> n;
   cout << "Ingrese la cantidad de estudiantes a registrar: ";
@@ -111,19 +112,22 @@ int main() {
 
   agregar_estudiantes(codigo, promedio, n, n_inicial, n_extra);
   n2 = n;
-  cout << "Estudiantes registrados:"<<endl; 
+  cout << "Estudiantes registrados:" << endl;
   imprimir(codigo, promedio, n_inicial, n_extra);
   n = eliminarEstudiantes(codigo, promedio, n_inicial + n_extra);
   nf = n;
-  cout <<"\n"<<endl;
-  cout << "Filtrando a estudiantes desaprobados..."<<endl;
-  cout <<"\n"<<endl;
+  cout << "\n" << endl;
+  cout << "Filtrando a estudiantes desaprobados..." << endl;
+  cout << "\n" << endl;
+  cout << "Estudiantes aprobados:" << endl;
   imprimir(codigo, promedio, n, 0);
   EliminarMemoria(codigo, promedio);
-  cout << "==============================="<<endl;
-  cout << "Informacion adicional para monitorear como cambian los tamanios del array."<<endl;
-  cout << "Tamanio del array inicial: "<<n1<<endl;
-  cout << "Tamanio del array con los datos agregados: "<<n2<<endl;
-  cout << "Tamanio del array con los datos filtrados: "<<nf<<endl;
+  cout << "===============================" << endl;
+  cout << "Informacion adicional para monitorear como cambian los tamanios del "
+          "array."
+       << endl;
+  cout << "Tamanio del array inicial: " << n1 << endl;
+  cout << "Tamanio del array con los datos agregados: " << n2 << endl;
+  cout << "Tamanio del array con los datos filtrados: " << nf << endl;
   return 0;
 }

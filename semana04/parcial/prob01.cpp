@@ -8,7 +8,6 @@ int costoMaximoConSalidas(int arr[], int n, int pos, int cantLlamadas) {
   if (pos == n) {
     return 0;
   }
-
   // Caso recursivo
   int max = INT_MIN;
   int producto = 1;
@@ -29,7 +28,6 @@ int costoMaximo(int arr[], int n, int pos) {
   if (pos == n) {
     return 0;
   }
-
   // Caso recursivo
   int max = INT_MIN;
   int producto = 1;
@@ -44,7 +42,6 @@ int costoMaximo(int arr[], int n, int pos) {
 }
 
 int main() {
-
   int arr[] = {1, 2, 3, 4, 5};
   int n = sizeof(arr) / sizeof(arr[0]);
   int cmin = costoMaximo(arr, n, 0);
@@ -53,7 +50,7 @@ int main() {
   }
   cout << endl;
   cout << "Costo maximo: " << cmin << endl;
-  cout << "Salidas de la recursions" << endl;
+  cout << "Salidas de la recursion" << endl;
   costoMaximoConSalidas(arr, n, 0, 0);
   return 0;
 }

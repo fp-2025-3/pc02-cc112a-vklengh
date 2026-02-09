@@ -35,8 +35,7 @@ int main() {
 
 void leerDatos(char nombre[][20], int tiempo[], int n) {
   for (int i = 0; i < n; i++) {
-    cout << "Nombre del corredor " << i + 1 << ":";
-    // cin.getline(nombre[i], 20);
+    cout << "Nombre del corredor " << i + 1 << ": ";
     cin >> nombre[i];
 
     cout << "Tiempo (en segundos): ";
@@ -65,6 +64,7 @@ void ordenarPorTiempo(char nombre[][20], int tiempo[], int n) {
 void mostrarRanking(char nombre[][20], int tiempo[], int n) {
   // Primero se ordena los datos
   ordenarPorTiempo(nombre, tiempo, n);
+  cout << "RANKING FINAL" << endl;
   for (int i = 0; i < n; i++) {
     cout << i + 1 << ". " << nombre[i] << " - " << tiempo[i] << " segundos"
          << endl;
@@ -89,6 +89,7 @@ void buscarCorredor(char nombre[][20], int tiempo[], int n, char clave[20]) {
 
 void buscarEnRango(char nombre[][20], int tiempo[], int n, int t_min,
                    int t_max) {
+  cout << "Corredores en el rango [" << 350 << ", " << 420 << "]:" << endl;
   for (int i = 0; i < n; i++) {
     if (tiempo[i] >= t_min and tiempo[i] <= t_max) {
       cout << nombre[i] << " - " << tiempo[i] << " segundos" << endl;

@@ -1,16 +1,20 @@
 #include <iomanip>
 #include <iostream>
-//
+
 const int N = 4;
 
 using namespace std;
 bool esFilaDominanteEstricta(int (*M)[N], int f);
 bool esFilaFuertementeDominante(int (*M)[N], int f);
 void imprimir(int (*M)[N]);
+void imprimirMatriz(int (*M)[N]);
 
 int main() {
   int M[N][N] = {{2, 3, 1, 4}, {1, 2, 3, 2}, {5, 6, 7, 8}, {0, 1, 2, 1}};
-  // cout << "Es fila dominante: " << esFilaDominanteEstricta(M, 2) << endl;
+  cout << "Entrada: "<<endl;
+  imprimirMatriz(M);
+  cout << "\n"<<endl;
+  cout << "Salida: "<<endl;
   imprimir(M);
   return 0;
 }
@@ -94,14 +98,24 @@ void imprimir(int (*M)[N]) {
     bool esDominante = esFilaDominanteEstricta(M, i);
     bool esFilaFuerte = esFilaFuertementeDominante(M, i, esDominante);
     if (esDominante) {
-      cout << setw(15) << left << i << setw(28) << "SI" << right ;
+      cout << setw(15) << left << i << setw(28) << "SI" << right;
     } else {
-      cout << setw(15) << left << i << setw(28) << "NO" << right ;
+      cout << setw(15) << left << i << setw(28) << "NO" << right;
     }
     if (esFilaFuerte) {
       cout << "SI" << endl;
     } else {
       cout << "NO" << endl;
     }
+  }
+}
+
+void imprimirMatriz(int (*M)[N]) {
+
+  for (int i = 0; i < N; i++) {
+    for (int j = 0; j < N; j++) {
+        cout << *(*M+i*N+j) << " ";
+    }
+    cout << endl;
   }
 }
