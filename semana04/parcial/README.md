@@ -27,8 +27,8 @@
 
 ### Pregunta 4:
 
-![alt text](assets/prob04-1.png)
+![alt text](assets/prob04-1v2.png)
 
-![alt text](assets/prob04-2.png)
+![alt text](assets/prob04-2v2.png)
 
-![alt text](assets/prob04-3.png)
+![alt text](assets/prob04-3v2.png)

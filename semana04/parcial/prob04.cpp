@@ -1,3 +1,4 @@
+#include <iomanip>
 #include <iostream>
 using namespace std;
 
@@ -60,25 +61,27 @@ void EliminarMemoria(int *&codigo, float *&promedio) {
 
 int eliminarEstudiantes(int *&codigo, float *&promedio, int final) {
   int contador = 0;
+  int *idx_list = new int[final];
   // Un bucle para determinar la cantidad de elementos que el
   // array debe tener y otro para hacer las asignaciones
   for (int i = 0; i < final; i++) {
     if (promedio[i] >= 10) {
+      *(idx_list + contador) = i;
       contador++;
     }
   }
   int *temp_cod = new int[contador];
   float *temp_prom = new float[contador];
   int idx = 0;
-  for (int i = 0; i < final; i++) {
-    if (promedio[i] >= 10) {
-      temp_cod[idx] = codigo[i];
-      temp_prom[idx] = promedio[i];
-      idx++;
-    }
+  while (idx < contador) {
+    temp_cod[idx] = codigo[idx_list[idx]];
+    temp_prom[idx] = promedio[idx_list[idx]];
+    idx++;
   }
+  delete[] idx_list;
   delete[] codigo;
   delete[] promedio;
+  idx_list = nullptr;
   codigo = nullptr;
   promedio = nullptr;
   codigo = temp_cod;
@@ -88,7 +91,8 @@ int eliminarEstudiantes(int *&codigo, float *&promedio, int final) {
 
 void imprimir(int *codigo, float *promedio, int inicial, int adicional) {
   for (int i = 0; i < inicial + adicional; i++) {
-    cout << "Codigo: " << codigo[i] << " Promedio: " << promedio[i] << endl;
+    cout << "Codigo: " << codigo[i] << " Promedio: " << fixed << setprecision(1)
+         << promedio[i] << endl;
   }
 }
 
@@ -104,12 +108,9 @@ int main() {
   float *promedio;
   n1 = n;
   inicializar_estudiantes(codigo, promedio, n, n_inicial);
-
   imprimir(codigo, promedio, n_inicial, 0);
-
   cout << "Ingrese la cantidad de estudiantes que quiere agregar: ";
   cin >> n_extra;
-
   agregar_estudiantes(codigo, promedio, n, n_inicial, n_extra);
   n2 = n;
   cout << "Estudiantes registrados:" << endl;
