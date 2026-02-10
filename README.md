@@ -3,20 +3,22 @@
 
 ### Acualizaciones:
 
-#### 2. **Semana 5**
-[Teoria - ejercicio01](semana05/teoria/ejercicio01.cpp)
+#### 4. **Semana 5**
+[Teoria semana 05 - ejercicios](semana05/teoria)
 
-[Teoria semana 05](semana05/teoria)
-
-#### 2. **Semana 4**
+#### 3. **Semana 4**
 [Solucionario Examen Parcial](semana04/parcial)
 
 [Laboratorio semana 04](semana04/lab)
 
 [Teoria semana 04](semana04/teoria)
 
-#### 1. **Semana 3**
+#### 2. **Semana 3**
 [Solucionario PC03](semana03/pc)
 
 [Tarea semana 03](semana03/tarea)
+
+#### 1. **Semana 2**
+[Solucionario PC02](semana02)
+
 
