@@ -4,8 +4,9 @@
 ### Acualizaciones:
 
 #### 2. **Semana 5**
-[Teoria semana 04 - ejercicio01](semana04/teoria/ejercicio01.cpp)
-[Teoria semana 04](semana04/teoria)
+[Teoria - ejercicio01](semana04/teoria/ejercicio01.cpp)
+
+[Teoria semana 05](semana04/teoria)
 
 #### 2. **Semana 4**
 [Solucionario Examen Parcial](semana04/parcial)
