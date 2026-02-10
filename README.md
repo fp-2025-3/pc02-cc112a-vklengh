@@ -2,6 +2,11 @@
 ### Codigo: 20255514D
 
 ### Acualizaciones:
+
+#### 2. **Semana 5**
+[Teoria semana 04 - ejercicio01](semana04/teoria/ejercicio01.cpp)
+[Teoria semana 04](semana04/teoria)
+
 #### 2. **Semana 4**
 [Solucionario Examen Parcial](semana04/parcial)
 
