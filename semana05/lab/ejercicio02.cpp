@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+
 using namespace std;
 
 struct Estudiante {
@@ -28,7 +28,6 @@ void leerDatos(Estudiante *e, int n) {
 void mejorEstudiante(Estudiante *e, int n) {
   Estudiante mejorEst = *e;
   for (int i = 0; i < n; i++) {
-      // cout << (*(e+i)).nombre << " " << (*(e+i)).nota << endl;
     if (mejorEst.nota < (*(e + i)).nota) {
       mejorEst = *(e + i);
     }
