@@ -11,6 +11,8 @@
 
 ### Pregunta 2:
 
+![alt text](assets/ejercicio02.png)
+
 ### Pregunta 3:
 
 ### Pregunta 4:
