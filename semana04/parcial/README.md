@@ -7,9 +7,9 @@
 
 ### Pregunta 1:
 
-![alt text](assets/prob01-1.png)
+![alt text](assets/prob01-1v2.png)
 
-![alt text](assets/prob01-2.png)
+![alt text](assets/prob01-2v2.png)
 
 ## 1.b.
 
