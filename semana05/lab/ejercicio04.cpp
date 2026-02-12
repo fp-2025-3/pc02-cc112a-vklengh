@@ -52,11 +52,9 @@ void escribirPolinomios(int *coef, int grado) {
   }
 }
 
-void sumarPolinomios(Polinomio *p1, Polinomio *p2) {
-  int gradoMayor;
-  int gradoMenor;
-  Polinomio *polMayor;
-  Polinomio *polMenor;
+void polinomioComparacion(Polinomio *p1, Polinomio *p2, Polinomio *&polMayor,
+                          Polinomio *&polMenor, int &gradoMayor,
+                          int &gradoMenor) {
   if ((*p1).grado >= (*p2).grado) {
     polMayor = p1;
     polMenor = p2;
@@ -68,6 +66,14 @@ void sumarPolinomios(Polinomio *p1, Polinomio *p2) {
     gradoMayor = (*p2).grado;
     gradoMenor = (*p1).grado;
   }
+}
+
+void sumarPolinomios(Polinomio *p1, Polinomio *p2) {
+  int gradoMayor;
+  int gradoMenor;
+  Polinomio *polMayor;
+  Polinomio *polMenor;
+  polinomioComparacion(p1, p2, polMayor, polMenor, gradoMayor, gradoMenor);
   int *coefSuma = new int[gradoMayor + 1];
   for (int i = 0; i <= gradoMayor; i++) {
     int coef = *((*polMayor).coef + gradoMayor - i);
@@ -87,17 +93,7 @@ void multiplicarPolinomios(Polinomio *p1, Polinomio *p2) {
   int gradoMenor;
   Polinomio *polMayor;
   Polinomio *polMenor;
-  if ((*p1).grado >= (*p2).grado) {
-    polMayor = p1;
-    polMenor = p2;
-    gradoMayor = (*p1).grado;
-    gradoMenor = (*p2).grado;
-  } else {
-    polMayor = p2;
-    polMenor = p1;
-    gradoMayor = (*p2).grado;
-    gradoMenor = (*p1).grado;
-  }
+  polinomioComparacion(p1, p2, polMayor, polMenor, gradoMayor, gradoMenor);
   int *coefProd = new int[gradoMult + 1]; // filas
   // inicializando el array
   for (int i = 0; i <= gradoMult; i++) {
