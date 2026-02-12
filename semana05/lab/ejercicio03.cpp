@@ -15,12 +15,13 @@ struct Equipo {
 
 void imprimirSeleccion(Equipo e, int n) {
   cout << "Pais_seleccion " << n << setw(10) << e.pg << setw(5) << e.pp
-       << setw(5) << e.pe << setw(10) << e.puntaje << setw(15) << e.rendimiento
-       << endl;
+       << setw(5) << e.pe << setw(10) << e.puntaje << setw(15) << fixed
+       << setprecision(1) << e.rendimiento << endl;
 }
 void generarPuntaje(Equipo e[], int n) {
   cout << "Seleccion" << setw(17) << "PG" << setw(5) << "PP" << setw(5) << "PE"
        << setw(10) << "Puntaje" << setw(15) << "Rendimiento" << endl;
+
   for (int i = 0; i < n; i++) {
     e[i].pg = rand() % 101;
     e[i].pp = 0;
@@ -47,7 +48,8 @@ void mejorRendimiento(Equipo e[], int n) {
     }
   }
   cout << "La seleccion con mejor rendimiento es: Seleccion " << mejorIndex
-       << " Rendimiento: " << mejorEquipo.rendimiento << endl;
+       << " Rendimiento: " << fixed << setprecision(1)
+       << mejorEquipo.rendimiento << endl;
 }
 
 int main() {

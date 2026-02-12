@@ -15,7 +15,7 @@
 
 ### Pregunta 3:
 
-![alt text](assets/ejercicio03.png)
+![alt text](assets/ejercicio03v2.png)
 
 ### Pregunta 4:
 
