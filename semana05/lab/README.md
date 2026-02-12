@@ -19,5 +19,9 @@
 
 ### Pregunta 4:
 
+![alt text](assets/ejercicio04-1.png)
+
+![alt text](assets/ejercicio04-2.png)
+
 ### Pregunta 5:
 
