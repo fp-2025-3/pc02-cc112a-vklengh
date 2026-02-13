@@ -60,20 +60,6 @@ void insertarAlFinal(ListaProcesos *&cabeza) {
   temp->sig = nuevo;
 }
 
-void insertarEnPosicion(ListaProcesos *&cabeza, ListaProcesos *&pos) {
-  ListaProcesos *nuevo = new ListaProcesos;
-  nuevo->sig = pos;
-  if (cabeza == pos) {
-    cabeza = nuevo;
-    return;
-  }
-  ListaProcesos *temp = cabeza;
-  while (temp->sig != nullptr) {
-    temp = temp->sig;
-  }
-  temp->sig = nuevo;
-}
-
 void imprimirElementos(ListaProcesos *cabeza) {
   cout << "Mostrando todos los procesos:" << endl;
   while (cabeza != nullptr) {
@@ -164,7 +150,7 @@ void insertarPorMemoria(ListaProcesos *&cabeza) {
 
 void ordenarProcesos(ListaProcesos *&cabeza) {
   // insertion sort
-  if (cabeza == nullptr || cabeza->sig == nullptr)
+  if (cabeza == nullptr or cabeza->sig == nullptr)
     return;
 
   ListaProcesos *ordenada = nullptr;
