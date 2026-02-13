@@ -15,9 +15,6 @@ Producto crearProducto(int codigo, const char *nombre, double precio,
   Producto prod;
   prod.codigo = codigo;
   char *tempNombre = new char;
-  // tempNombre = "";
-  // tempNombre = nombre;
-  // tempNombre = nullptr;
   strcpy(tempNombre, nombre);
   prod.nombre = tempNombre;
   prod.precio = precio;
