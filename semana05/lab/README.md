@@ -25,3 +25,16 @@
 
 ### Pregunta 5:
 
+![alt text](assets/ejercicio05-1.png)
+
+![alt text](assets/ejercicio05-2.png)
+
+![alt text](assets/ejercicio05-3.png)
+
+![alt text](assets/ejercicio05-4.png)
+
+![alt text](assets/ejercicio05-5.png)
+
+![alt text](assets/ejercicio05-6.png)
+
+![alt text](assets/ejercicio05-7.png)

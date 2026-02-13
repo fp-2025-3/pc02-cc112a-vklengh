@@ -60,6 +60,20 @@ void insertarAlFinal(ListaProcesos *&cabeza) {
   temp->sig = nuevo;
 }
 
+void insertarEnPosicion(ListaProcesos *&cabeza, ListaProcesos *&pos) {
+  ListaProcesos *nuevo = new ListaProcesos;
+  nuevo->sig = pos;
+  if (cabeza == pos) {
+    cabeza = nuevo;
+    return;
+  }
+  ListaProcesos *temp = cabeza;
+  while (temp->sig != nullptr) {
+    temp = temp->sig;
+  }
+  temp->sig = nuevo;
+}
+
 void imprimirElementos(ListaProcesos *cabeza) {
   cout << "Mostrando todos los procesos:" << endl;
   while (cabeza != nullptr) {
@@ -124,9 +138,61 @@ void eliminarProceso(ListaProcesos *&cabeza, int ID) {
   delete actual;
 }
 
-ListaProcesos *insertarOrdenado(ListaProcesos *nuevo, ListaProcesos *ordenado) {
+void insertarPorMemoria(ListaProcesos *&cabeza) {
+  cout << "Ingrese los datos del proceso que se va a agregar a la lista."
+       << endl;
+  ListaProcesos *nuevo = new ListaProcesos;
+  llenarLista(nuevo);
+
+  // Caso 1: lista vacía o va al inicio
+  if (cabeza == nullptr or nuevo->memUsada < cabeza->memUsada) {
+    nuevo->sig = cabeza;
+    cabeza = nuevo;
+    return;
+  }
+  // Recorrer lista
+  ListaProcesos *actual = cabeza;
+
+  while (actual->sig != nullptr and actual->sig->memUsada <= nuevo->memUsada) {
+    actual = actual->sig;
+  }
+
+  // Insertar
+  nuevo->sig = actual->sig;
+  actual->sig = nuevo;
 }
-void ordenarProcesos(ListaProcesos *&cabeza) {}
+
+void ordenarProcesos(ListaProcesos *&cabeza) {
+  // insertion sort
+  if (cabeza == nullptr || cabeza->sig == nullptr)
+    return;
+
+  ListaProcesos *ordenada = nullptr;
+
+  while (cabeza != nullptr) {
+    ListaProcesos *actual = cabeza;
+    cabeza = cabeza->sig;
+
+    // Insertar en lista ordenada
+    if (ordenada == nullptr or actual->memUsada < ordenada->memUsada) {
+      // Insertar al inicio
+      actual->sig = ordenada;
+      ordenada = actual;
+    } else {
+      // Buscar posición correcta
+      ListaProcesos *temp = ordenada;
+
+      while (temp->sig != nullptr and temp->sig->memUsada <= actual->memUsada) {
+        temp = temp->sig;
+      }
+
+      actual->sig = temp->sig;
+      temp->sig = actual;
+    }
+  }
+
+  cabeza = ordenada;
+}
 
 void limpiarMemoria(ListaProcesos *&cabeza) {
   // Limpia la memoria
@@ -164,6 +230,13 @@ int main() {
   }
   imprimirElementos(cabeza);
   contarProcesos(cabeza);
+  cout << "Ordenar elementos por consumo de memoria." << endl;
+  ordenarProcesos(cabeza);
+  imprimirElementos(cabeza);
+  for (int i = 0; i < 4; i++) {
+    insertarPorMemoria(cabeza);
+  }
+  imprimirElementos(cabeza);
   limpiarMemoria(cabeza);
 
   return 0;
