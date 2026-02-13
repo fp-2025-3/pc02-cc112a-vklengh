@@ -4,6 +4,8 @@
 ### Acualizaciones:
 
 #### 4. **Semana 5**
+[Solucionario PC04](semana05/practica04)
+
 [Laboratorio semana 05 - ejercicios](semana05/lab)
 
 [Teoria semana 05 - ejercicios](semana05/teoria)

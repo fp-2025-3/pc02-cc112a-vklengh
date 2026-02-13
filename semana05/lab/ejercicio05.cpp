@@ -193,7 +193,7 @@ void limpiarMemoria(ListaProcesos *&cabeza) {
 int main() {
   int ID;
   ListaProcesos *cabeza = nullptr;
-  int n = 1;
+  int n = 0;
   int alInicio = 3;
   int alFinal = 2;
   crearListaProcesos(cabeza, n);
