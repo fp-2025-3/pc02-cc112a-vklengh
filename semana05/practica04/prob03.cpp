@@ -14,9 +14,8 @@ Producto crearProducto(int codigo, const char *nombre, double precio,
                        int stock) {
   Producto prod;
   prod.codigo = codigo;
-  char *tempNombre = new char;
-  strcpy(tempNombre, nombre);
-  prod.nombre = tempNombre;
+  prod.nombre = new char[strlen(nombre)+1];
+  strcpy(prod.nombre, nombre);
   prod.precio = precio;
   prod.stock = stock;
   return prod;
@@ -24,59 +23,39 @@ Producto crearProducto(int codigo, const char *nombre, double precio,
 
 Producto *crearInventario(int n) {
   Producto *inventario = new Producto[n];
-  int codigo;
-  char *nombre;
-  double precio;
-  int stock;
-  codigo = 100;
-  nombre = "Teclado";
-  precio = 10.5;
-  stock = 5;
-  *(inventario) = crearProducto(codigo, nombre, precio, stock);
-  codigo = 101;
-  nombre = "Mouse";
-  precio = 21;
-  stock = 10;
-  *(inventario + 1) = crearProducto(codigo, nombre, precio, stock);
-  codigo = 102;
-  nombre = "Monitor";
-  precio = 31.5;
-  stock = 15;
-  *(inventario + 2) = crearProducto(codigo, nombre, precio, stock);
-  codigo = 102;
-  nombre = "Laptop";
-  precio = 42;
-  stock = 20;
-  *(inventario + 3) = crearProducto(codigo, nombre, precio, stock);
-  codigo = 104;
-  nombre = "Impresora";
-  precio = 52.5;
-  stock = 25;
-  *(inventario + 4) = crearProducto(codigo, nombre, precio, stock);
+  *(inventario) = crearProducto(100, "Teclado", 10.5, 5);
+  *(inventario + 1) = crearProducto(101, "Mouse", 21, 10);
+  *(inventario + 2) = crearProducto(102, "Monitor", 31.5, 15);
+  *(inventario + 3) = crearProducto(103, "Laptop", 42, 20);
+  *(inventario + 4) = crearProducto(104, "Impresora", 52.5, 25);
   return inventario;
 }
 
-// Producto *crearInventarioManual(int n) {
-//   Producto *inventario = new Producto[n];
-//   for (int i = 0; i < n; i++) {
-//     int codigo;
-//     char *nombre;
-//     double precio;
-//     int stock;
-//     cout << "Ingrese datos del producto: " << endl;
-//     cout << "Codigo: ";
-//     cin >> codigo;
-//     cin.ignore();
-//     cout << "Nombre: ";
-//     cin >> nombre;
-//     cout << "Precio: ";
-//     cin >> precio;
-//     cout << "Stock: ";
-//     cin >> stock;
-//     *(inventario + i) = crearProducto(codigo, nombre, precio, stock);
-//   }
-//   return inventario;
-// }
+Producto *crearInventarioManual(int n) {
+  Producto *inventario = new Producto[n];
+  for (int i = 0; i < n; i++) {
+    int codigo;
+    string temp;
+    char *nombre;
+    double precio;
+    int stock;
+    cout << "Ingrese datos del producto: " << endl;
+    cout << "Codigo: ";
+    cin >> codigo;
+    cin.ignore();
+    cout << "Nombre: ";
+    getline(cin,temp);
+    nombre = &temp[0];
+    cout << "Precio: ";
+    cin >> precio;
+    cin.ignore();
+    cout << "Stock: ";
+    cin >> stock;
+    cin.ignore();
+    *(inventario + i) = crearProducto(codigo, nombre, precio, stock);
+  }
+  return inventario;
+}
 
 void mostrarInventario(Producto *inventario, int n) {
   for (int i = 0; i < n; i++) {
@@ -102,7 +81,7 @@ Producto *buscarProducto(Producto *inventario, int n, int codigoBuscado) {
 
 void liberarInventario(Producto *&inventario, int n) {
   for (int i = 0; i < n; i++) {
-    delete inventario[i].nombre;
+    delete [] inventario[i].nombre;
     inventario[i].nombre = nullptr;
   }
   delete[] inventario;
@@ -110,11 +89,18 @@ void liberarInventario(Producto *&inventario, int n) {
 }
 
 int main() {
-  int n = 5;
-  Producto *inventario = crearInventario(n);
+  int n;
+  int codigo;
+  cout << "Ingrese la cantidad de productos a agregar al inventario: ";
+  cin >> n;
+  // Producto *inventario = crearInventario(5);
+  // buscarProducto(inventario, 5, 102);
+  // liberarInventario(inventario, 5);
+  Producto *inventario = crearInventarioManual(n);
   mostrarInventario(inventario, n);
-  int codigo = 102;
-  buscarProducto(inventario, 5, codigo);
+  cout << "Ingrese el codigo del producto que quiere buscar: ";
+  cin >> codigo;
+  buscarProducto(inventario, n, codigo);
   liberarInventario(inventario, n);
   return 0;
 }

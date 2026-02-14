@@ -3,54 +3,39 @@
 using namespace std;
 
 struct Item {
-  // char *descripcion;
-  string descripcion;
+  char *descripcion;
   int cantidad;
   double PrecioUnitario;
 };
 
 struct Pedido {
   int numeroPedido;
-  // char *nombreCliente;
-  string nombreCliente;
+  char *nombreCliente;
   Item *items;
   int cantidadItems;
 };
 
-Item crearItem(string descripcion, int cantidad, double precio) {
-  Item *item = new Item;
-  // strcpy(item.descripcion, descripcion);
-  item->PrecioUnitario = precio;
-  item->cantidad = cantidad;
-  item->descripcion = descripcion;
-  return *item;
+Item crearItem(const char *descripcion, int cantidad, double precio) {
+  // Item *item = new Item;
+  Item item;
+  item.PrecioUnitario = precio;
+  item.cantidad = cantidad;
+  item.descripcion = new char[strlen(descripcion) + 1];
+  strcpy(item.descripcion, descripcion);
+  return item;
 }
 
-Pedido *crearPedido(int numero, char *cliente, int cantidadItems) {
+Pedido *crearPedido(int numero, const char *cliente, int cantidadItems) {
   Pedido *pedido = new Pedido;
-  pedido->nombreCliente = new char;
-  char *desc;
-  int cant;
-  double precio;
-  // strcpy(pedido->nombreCliente, cliente);
-  pedido->nombreCliente = cliente;
+  pedido->nombreCliente = new char[strlen(cliente) + 1];
+  strcpy(pedido->nombreCliente, cliente);
   pedido->numeroPedido = numero;
   pedido->cantidadItems = cantidadItems;
-  desc = "Laptop";
-  cant = 1;
-  precio = 100;
-  cout << 2<<endl;
-  *(pedido->items) = crearItem(desc, cant, precio);
-  // (*(pedido + 0))= crearItem(desc, cant, precio);
-  cout << 1<<endl;
-  desc = "Mouse";
-  cant = 2;
-  precio = 200;
-  *(*(pedido + 1)).items = crearItem(desc, cant, precio);
-  desc = "Teclado";
-  cant = 3;
-  precio = 300;
-  *(*(pedido + 2)).items = crearItem(desc, cant, precio);
+
+  pedido->items = new Item[cantidadItems];
+  pedido->items[0] = crearItem("Laptop", 1, 100);
+  pedido->items[1] = crearItem("Mouse", 2, 200);
+  pedido->items[2] = crearItem("Teclado", 3, 300);
   return pedido;
 }
 
@@ -76,16 +61,16 @@ Pedido *crearPedidoManual(int numero, const char *cliente, int cantidadItems) {
 double calcularTotal(const Pedido *p) {
   double suma = 0.;
   for (int i = 0; i < p->cantidadItems; i++) {
-    suma += ((*(p + i)).items->cantidad) * ((*(p + i)).items->PrecioUnitario);
+    suma += (p->items[i].cantidad) * (p->items[i].PrecioUnitario);
   }
   return suma;
 }
 
 Item *itemMasCaro(Pedido *p) {
   Item *masCaro = p->items;
-  for (int i = 0; i < p->cantidadItems; i++) {
-    if ((*(p + i)).items->PrecioUnitario > masCaro->PrecioUnitario) {
-      masCaro = (p + i)->items;
+  for (int i = 1; i < p->cantidadItems; i++) {
+    if (p->items[i].PrecioUnitario > masCaro->PrecioUnitario) {
+      masCaro = &p->items[i];
     }
   }
   return masCaro;
@@ -93,17 +78,37 @@ Item *itemMasCaro(Pedido *p) {
 
 void liberarPedido(Pedido *&p) {
   for (int i = 0; i < p->cantidadItems; i++) {
-    delete[] (p + i)->items;
-    (p + i)->items = nullptr;
+    delete[] p->items[i].descripcion;
+    p->items[i].descripcion = nullptr;
   }
-  delete[] p;
+  delete[] p->items;
+  delete[] p->nombreCliente;
+  p->nombreCliente = nullptr;
+  p->items = nullptr;
+  delete p;
   p = nullptr;
 }
 
+void imprimir(Pedido *pedido) {
+  cout << "Pedido: N°: " << pedido->numeroPedido << endl;
+  cout << "Cliente: " << pedido->nombreCliente << "\n" << endl;
+  cout << "Items:" << endl;
+  for (int i = 0; i < pedido->cantidadItems; i++) {
+    cout << "- " << pedido->items[i].descripcion
+         << " | Cant: " << pedido->items[i].cantidad
+         << " | Precio: " << pedido->items[i].PrecioUnitario << endl;
+  }
+  cout << endl;
+  double total = calcularTotal(pedido);
+  Item *masCaro = itemMasCaro(pedido);
+  cout << "Total: " << total << "\n" << endl;
+  cout << "Item mas caro: " << masCaro->descripcion
+       << " | Precio: " << masCaro->PrecioUnitario << endl;
+}
+
 int main() {
-  int numero = 101;
-  char *cliente = "Carlos Perez";
-  int cantItems = 3;
-  Pedido *p = crearPedido(numero, cliente, cantItems);
+  Pedido *p = crearPedido(101, "Carlos Perez", 3);
+  imprimir(p);
+  liberarPedido(p);
   return 0;
 }
