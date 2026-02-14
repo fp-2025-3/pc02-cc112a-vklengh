@@ -41,19 +41,28 @@ Pedido *crearPedido(int numero, const char *cliente, int cantidadItems) {
 
 Pedido *crearPedidoManual(int numero, const char *cliente, int cantidadItems) {
   Pedido *pedido = new Pedido;
-  pedido->nombreCliente = new char;
-  Item *item = new Item;
+  pedido->nombreCliente = new char[strlen(cliente) + 1];
+  strcpy(pedido->nombreCliente, cliente);
+  pedido->numeroPedido = numero;
+  pedido->cantidadItems = cantidadItems;
+
+  pedido->items = new Item[cantidadItems];
   for (int i = 0; i < cantidadItems; i++) {
-    char *desc;
-    int cant;
+    char *descripcion;
+    string temp;
+    int cantidad;
     double precio;
-    cout << "Ingresar descripcion item: ";
-    cin >> desc;
-    cout << "Ingresar cantidad item: ";
-    cin >> cant;
-    cout << "Ingresar precio de item: ";
+    cout << "Ingrese datos del item: " << endl;
+    cout << "Descripcion: ";
+    getline(cin, temp);
+    descripcion = &temp[0];
+    cout << "Cantidad: ";
+    cin >> cantidad;
+    cin.ignore();
+    cout << "Precio: ";
     cin >> precio;
-    *(*(pedido + i)).items = crearItem(desc, cant, precio);
+    cin.ignore();
+    pedido->items[i] = crearItem(descripcion, cantidad, precio);
   }
   return pedido;
 }
@@ -70,7 +79,8 @@ Item *itemMasCaro(Pedido *p) {
   Item *masCaro = p->items;
   for (int i = 1; i < p->cantidadItems; i++) {
     if (p->items[i].PrecioUnitario > masCaro->PrecioUnitario) {
-      masCaro = &p->items[i];
+      masCaro = &p->items[i]; // consultar este error, si es puntero por
+                              // copia corrompe la memoria
     }
   }
   return masCaro;
@@ -107,7 +117,22 @@ void imprimir(Pedido *pedido) {
 }
 
 int main() {
-  Pedido *p = crearPedido(101, "Carlos Perez", 3);
+  // Pedido *p = crearPedido(101, "Carlos Perez", 3);
+  int nItems;
+  char *nombre;
+  string temp;
+  int codigo;
+  cout << "Ingrese el codigo del pedido: "<<endl;
+  cin >> codigo;
+  cin.ignore();
+  cout << "Ingrese el nombre del cliente: "<<endl;
+  getline(cin, temp);
+  nombre = &temp[0];
+  cout << "Ingrese el numero de items: "<<endl;
+  cin>>nItems;
+  cin.ignore();
+
+  Pedido *p = crearPedidoManual(codigo, nombre, nItems);
   imprimir(p);
   liberarPedido(p);
   return 0;

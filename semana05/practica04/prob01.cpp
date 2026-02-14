@@ -25,7 +25,11 @@ void escribirPol(Polinomio *p) {
         cout << *((*p).coef + i) << "x^" << (*p).grado - i << " + ";
       }
     } else {
-      cout << *((*p).coef + i) << endl;
+      if (*((*p).coef + i) != 0) {
+        cout << *((*p).coef + i) << endl;
+      } else {
+        cout << endl;
+      }
     }
   }
 }
@@ -143,13 +147,36 @@ int evaluarPolinomio(Polinomio *p, int x) {
   return eval;
 }
 
+int *llenarArray(int &n, string texto) {
+  cout << "Ingrese el grado del " << texto << " polinomio: ";
+  cin >> n;
+  int *arr = new int[n + 1];
+  cout << "Debe ingresar los coeficientes del polinomio para los grados en "
+          "orden decreciente"
+       << endl;
+  for (int i = 0; i <= n; i++) {
+    cout << "Coeficiente de grado (" << n - i << "):";
+    cin >> arr[i];
+  }
+  return arr;
+}
+
+void liberarMemoriaArray(int *&arr) {
+  delete[] arr;
+  arr = nullptr;
+}
+
 int main() {
-  int arr1[] = {1, 0, 3};
-  int n1 = 2;
-  int arr2[] = {-4, 5};
-  int n2 = 1;
-  int arr3[] = {3, 0, 1};
-  int n3 = 2;
+  // int arr1[] = {1, 0, 3};
+  // int n1 = 2;
+  // int arr2[] = {-4, 5};
+  // int n2 = 1;
+  // int arr3[] = {3, 0, 1};
+  // int n3 = 2;
+  int n1, n2, n3;
+  int *arr1 = llenarArray(n1, "primer");
+  int *arr2 = llenarArray(n2, "segundo");
+  int *arr3 = llenarArray(n3, "tercer");
   Polinomio *p1 = crearPolinomio(arr1, n1);
   Polinomio *p2 = crearPolinomio(arr2, n2);
   Polinomio *p3 = crearPolinomio(arr3, n3);
@@ -170,5 +197,8 @@ int main() {
   liberarMemoria(p1);
   liberarMemoria(p2);
   liberarMemoria(p3);
+  liberarMemoriaArray(arr1);
+  liberarMemoriaArray(arr2);
+  liberarMemoriaArray(arr3);
   return 0;
 }
