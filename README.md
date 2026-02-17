@@ -3,6 +3,9 @@
 
 ### Acualizaciones:
 
+#### 5. **Semana 5**
+[Teoria semana 06 - ejercicios](semana06/teoria)
+
 #### 4. **Semana 5**
 [Solucionario PC04](semana05/practica04)
 
