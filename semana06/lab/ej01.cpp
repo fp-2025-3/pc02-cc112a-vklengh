@@ -1,16 +1,24 @@
-#include <cstring>
 #include <fstream>
 #include <iostream>
 
-const int DIAS = 7;
-
-void trab();
 using namespace std;
 
+const int DIAS = 7;
+struct VentasSemanales {
+  double ventaDiaria[DIAS];
+  double total;
+  double promedio;
+  double mayorVenta;
+  double menorVenta;
+};
+
+
+void estadisticasVenta(VentasSemanales &ventas);
 bool abrirArchivo(fstream &archivo, int modo, const string &archivo_path);
+void ejemplo01();
 
 int main() { 
-    trab();
+    ejemplo01();
     return 0; }
 
 bool abrirArchivo(fstream &archivo, int modo, const string &archivo_path) {
@@ -50,14 +58,6 @@ bool abrirArchivo(fstream &archivo, int modo, const string &archivo_path) {
   return true;
 }
 
-struct VentasSemanales {
-  double ventaDiaria[DIAS];
-  double total;
-  double promedio;
-  double mayorVenta;
-  double menorVenta;
-};
-
 void estadisticasVenta(VentasSemanales &ventas) {
   ventas.menorVenta = ventas.ventaDiaria[0];
   ventas.mayorVenta = ventas.ventaDiaria[0];
@@ -74,7 +74,7 @@ void estadisticasVenta(VentasSemanales &ventas) {
   ventas.promedio = ventas.total / DIAS;
 }
 
-void trab() {
+void ejemplo01() {
   fstream archivo;
   const string archivoDir = "outputs/ventas.txt";
   bool abierto = abrirArchivo(archivo, 4, archivoDir);

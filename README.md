@@ -4,6 +4,8 @@
 ### Acualizaciones:
 
 #### 5. **Semana 6**
+[Laboratorio semana 06 - ejercicios](semana06/lab)
+
 [Teoria semana 06 - ejercicios](semana06/teoria)
 
 #### 4. **Semana 5**
