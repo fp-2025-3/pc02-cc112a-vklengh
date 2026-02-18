@@ -62,16 +62,16 @@ bool abrirArchivo(fstream &archivo, int modo, const string &archivo_path) {
 void estadisticasEstudiantes(Estudiantes &e) {
   e.notaMayor = e.nota[0];
   e.notaMenor = e.nota[0];
-  e.promedio = e.nota[0];
+  e.promedio = 0;
   e.estudiantesAprobados = 0;
   e.estudiantesDesaprobados = 0;
 
-  for (int i = 1; i < e.numEstudiantes; i++) {
+  for (int i = 0; i < e.numEstudiantes; i++) {
     e.promedio += e.nota[i];
-    if (e.notaMenor > e.nota[i]) {
+    if (i > 0 and e.notaMenor > e.nota[i]) {
       e.notaMenor = e.nota[i];
     }
-    if (e.notaMayor < e.nota[i]) {
+    if (i > 0 and e.notaMayor < e.nota[i]) {
       e.notaMayor = e.nota[i];
     }
     if (e.nota[i] >= 10) {

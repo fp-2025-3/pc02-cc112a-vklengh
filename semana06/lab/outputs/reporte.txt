@@ -4,5 +4,5 @@ Total estudiantes: 8
 Promedio: 14.375
 Mayor nota: 20
 Menor nota: 9
-Aprobados: 6
+Aprobados: 7
 Desaprobados: 1
