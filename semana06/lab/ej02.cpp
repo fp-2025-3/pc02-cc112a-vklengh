@@ -86,7 +86,7 @@ void estadisticasEstudiantes(Estudiantes &e) {
 void leerArchivo() {
   fstream archivo, archivoReporte;
   Estudiantes e;
-  const string archivoDir = "outputs/notas.txt";
+  const string archivoDir = "inputs/notas.txt";
   const string archivoReporteDir = "outputs/reporte.txt";
   bool abierto = abrirArchivo(archivo, 2, archivoDir);
   string nombre;
