@@ -195,16 +195,72 @@ double calcularValorInventario(const char *nombreArchivo) {
   return total;
 }
 
-void menu();
+void menu() {
+  bool terminado = false;
+  const char *nombreArchivo = "inputs/inventario.dat";
+  while (!terminado) {
+    int opcion;
+    cout << "MENU\n";
+    cout << "--------------------------------------\n";
+    cout << "Presione 1 para registrar producto\n";
+    cout << "Presione 2 para mostrar productos\n";
+    cout << "Presione 3 para buscar producto\n";
+    cout << "Presione 4 para modificar precio\n";
+    cout << "Presione 5 para eliminar producto\n";
+    cout << "Presione 6 para calcular valor total\n";
+    cout << "Presione 7 para salir del programa\n";
+    cin >> opcion;
+    switch (opcion) {
+    case 1: {
+      registrarProducto(nombreArchivo);
+      break;
+    }
+    case 2: {
+      mostrarProductos(nombreArchivo);
+      break;
+    }
+    case 3: {
+      int id, busqueda;
+      cout << "Ingrese el id a buscar\n";
+      cin >> id;
+      busqueda = buscarProductoID(nombreArchivo, id);
+      cout << "Se encontro producto en la posicion: " << busqueda << endl;
+      break;
+    }
+    case 4: {
+      int id;
+      double nuevoPrecio;
+      cout << "Ingrese el id del producto\n";
+      cin >> id;
+      cout << "Ingrese el nuevo precio\n";
+      cin >> nuevoPrecio;
+      modificarPrecio(nombreArchivo, id, nuevoPrecio);
+      break;
+    }
+    case 5: {
+      int id;
+      cout << "Ingrese el id del producto a eliminar\n";
+      cin >> id;
+      eliminarProducto(nombreArchivo, id);
+      break;
+    }
+    case 6: {
+      double total = calcularValorInventario(nombreArchivo);
+      cout << "Valor total inventario: " << total << endl;
+      break;
+    }
+    case 7:
+      terminado = true;
+      cout << "Se termino el programa\n";
+      break;
+    default:
+      cout << "Opcion invalida, intentelo nuevamente\n";
+      break;
+    }
+  }
+}
 
 int main() {
-  const char *nombreArchivo = "inputs/inventario.dat";
-  for (int i = 0; i < 3; i++) {
-    registrarProducto(nombreArchivo);
-  }
-  eliminarProducto(nombreArchivo, 7);
-  mostrarProductos(nombreArchivo);
-  cout << "Valor total inventario: " << calcularValorInventario(nombreArchivo)
-       << endl;
+  menu();
   return 0;
 }
