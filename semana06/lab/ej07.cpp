@@ -4,6 +4,13 @@
 
 using namespace std;
 
+void leerArchivo();
+
+int main() {
+  leerArchivo();
+  return 0;
+}
+
 double arreglarNumero(double n) {
   const double limite = 0.00000001;
   if (n > 0 and n < limite) {
@@ -85,9 +92,4 @@ void leerArchivo() {
 
   archivo2.close();
   liberarMemoria(p);
-}
-
-int main() {
-  leerArchivo();
-  return 0;
 }
