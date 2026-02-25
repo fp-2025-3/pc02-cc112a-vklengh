@@ -1,8 +1,157 @@
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
-int main(){
-    return 0;
+struct Venta {
+  int idVenta;
+  int idVendedor;
+  int idProducto;
+  int cantidad;
+  double precioUnitario;
+};
+
+struct Vendedor {
+  int id;
+  double ventaTotal;
+};
+
+struct Producto {
+  int id;
+  int cantidadVendida;
+};
+
+void leerVenta() {
+  Venta v;
+  const string path = "entradas/ventas.dat";
+  ifstream archivo(path, ios::binary);
+
+  if (!archivo) {
+    cout << "Error al abrir el archivo" << endl;
+    return;
+  }
+
+  int totalRegistros;
+  archivo.read((char *)&totalRegistros, sizeof(int));
+  Vendedor *vendedor = new Vendedor[totalRegistros];
+  Producto *productos = new Producto[totalRegistros];
+  Venta *ventaSospechosa = new Venta[totalRegistros];
+  double montoTotalVendido = 0.;
+  int n = 0;
+  int iVendedor = 0;
+  int iProducto = 0;
+  int iVentaSospechosa = 0;
+
+  while (archivo.read((char *)&v, sizeof(Venta))) {
+    // cout << "ID venta: " << v.idVenta << " | ID vendedor: " << v.idVendedor
+    //      << " | ID Producto: " << v.idProducto << " | Cantidad: " <<
+    //      v.cantidad
+    //      << " | Precio Unidad: " << v.precioUnitario << endl;
+    montoTotalVendido += v.precioUnitario * v.cantidad;
+
+    // VENDEDORES
+    if (iVendedor == 0) {
+      // vendedorArray[iVendedor] = v.idVendedor;
+      vendedor[0].id = v.idVendedor;
+      vendedor[0].ventaTotal = v.cantidad * v.precioUnitario;
+      iVendedor++;
+    } else {
+      bool vendedorEnLista = false;
+      for (int i = 0; i < iVendedor; i++) {
+        if (vendedor[i].id == v.idVendedor) {
+          vendedorEnLista = true;
+          vendedor[i].ventaTotal += v.cantidad * v.precioUnitario;
+          // son id unicos, no hace falta leer mas
+          break;
+        }
+      }
+      if (!vendedorEnLista) {
+        vendedor[iVendedor].id = v.idVendedor;
+        vendedor[iVendedor].ventaTotal = v.cantidad * v.precioUnitario;
+        iVendedor++;
+      }
+    }
+
+    // PRODUCTOS
+    if (iProducto == 0) {
+      productos[0].id = v.idProducto;
+      productos[0].cantidadVendida = v.cantidad;
+      iProducto++;
+    } else {
+      bool productoEnLista = false;
+      for (int i = 0; i < iProducto; i++) {
+        if (productos[i].id == v.idProducto) {
+          productoEnLista = true;
+          productos[i].cantidadVendida += v.cantidad;
+          break;
+        }
+      }
+      if (!productoEnLista) {
+        productos[iProducto].id = v.idProducto;
+        productos[iProducto].cantidadVendida = v.cantidad;
+        iProducto++;
+      }
+    }
+
+    // VENTAS SOSPECHOSAS
+    if (v.cantidad > 100) {
+      ventaSospechosa[iVentaSospechosa] = v;
+      iVentaSospechosa++;
+    }
+    n++;
+  }
+
+  Vendedor vendedorMaximo = vendedor[0];
+  for (int i = 0; i < iVendedor; i++) {
+    if (vendedorMaximo.ventaTotal < vendedor[i].ventaTotal) {
+      vendedorMaximo = vendedor[i];
+    }
+  }
+  Producto productoMasVendido = productos[0];
+  for (int i = 0; i < iProducto; i++) {
+    if (productoMasVendido.cantidadVendida < productos[i].cantidadVendida) {
+      productoMasVendido = productos[i];
+    }
+  }
+
+
+  cout << "--- REPORTE GENERAL DE VENTAS ----"<<endl;
+  cout << endl;
+  cout << "Total de registros: " << totalRegistros << endl;
+  cout << endl;
+  cout << "MONTO TOTAL VENDIDO:\n";
+  cout << "S/." << montoTotalVendido << endl;
+  cout << endl;
+
+  cout << " ---------------------------------------\n";
+  cout << "VENDEDOR CON MAYOR RECAUDACIÓN:\n";
+  cout << "ID Vendedor: " << vendedorMaximo.id << endl;
+  cout << "Total vendido: S/." << vendedorMaximo.ventaTotal << endl;
+  cout << endl;
+
+  cout << " ---------------------------------------\n";
+  cout << "PRODUCTO MÁS VENDIDO: \n"
+       << "ID Producto: " << productoMasVendido.id << endl
+       << "Total Unidades: " << productoMasVendido.cantidadVendida << endl;
+  cout << endl;
+
+  cout << " ---------------------------------------\n";
+  cout << "VENTAS SOSPECHOSAS (cantidad > 100):" << endl;
+  int cantidadVentasSospechosas = 0;
+  for (int i = 0; i < iVentaSospechosa; i++) {
+    cantidadVentasSospechosas++;
+    cout << "ID venta: " << ventaSospechosa[i].idVenta
+         << " | ID vendedor: " << ventaSospechosa[i].idVendedor
+         << " | ID Producto: " << ventaSospechosa[i].idProducto
+         << " | Cantidad: " << ventaSospechosa[i].cantidad
+         << " | Precio Unidad: " << ventaSospechosa[i].precioUnitario << endl;
+  }
+
+  // cout << cantidadVentasSospechosas << endl;
+  archivo.close();
+}
+
+int main() {
+  leerVenta();
+  return 0;
 }
