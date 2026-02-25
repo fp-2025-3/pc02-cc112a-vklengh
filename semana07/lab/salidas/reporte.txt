@@ -1,0 +1,85 @@
+--- REPORTE GENERAL DE VENTAS ----
+
+Total de registros: 200
+
+MONTO TOTAL VENDIDO:
+S/.530221
+
+---------------------------------------
+VENDEDOR CON MAYOR RECAUDACIÓN:
+ID Vendedor: 9
+Total vendido: S/.71382.9
+
+---------------------------------------
+PRODUCTO MÁS VENDIDO: 
+ID Producto: 14
+Total Unidades: 1114
+
+---------------------------------------
+VENTAS SOSPECHOSAS (cantidad > 100):
+
+ID venta: 3 | ID vendedor: 10 | ID Producto: 17 | Cantidad: 109 | Precio Unidad: 21.5
+ID venta: 7 | ID vendedor: 3 | ID Producto: 3 | Cantidad: 102 | Precio Unidad: 10.48
+ID venta: 8 | ID vendedor: 2 | ID Producto: 5 | Cantidad: 146 | Precio Unidad: 25.39
+ID venta: 9 | ID vendedor: 10 | ID Producto: 9 | Cantidad: 129 | Precio Unidad: 43.41
+ID venta: 10 | ID vendedor: 5 | ID Producto: 14 | Cantidad: 118 | Precio Unidad: 23.66
+ID venta: 11 | ID vendedor: 10 | ID Producto: 6 | Cantidad: 117 | Precio Unidad: 15.21
+ID venta: 16 | ID vendedor: 9 | ID Producto: 17 | Cantidad: 127 | Precio Unidad: 42.97
+ID venta: 24 | ID vendedor: 1 | ID Producto: 11 | Cantidad: 123 | Precio Unidad: 51.55
+ID venta: 28 | ID vendedor: 8 | ID Producto: 17 | Cantidad: 128 | Precio Unidad: 47.5
+ID venta: 31 | ID vendedor: 9 | ID Producto: 4 | Cantidad: 143 | Precio Unidad: 51
+ID venta: 34 | ID vendedor: 1 | ID Producto: 3 | Cantidad: 116 | Precio Unidad: 26.03
+ID venta: 36 | ID vendedor: 5 | ID Producto: 12 | Cantidad: 101 | Precio Unidad: 50.38
+ID venta: 39 | ID vendedor: 1 | ID Producto: 18 | Cantidad: 130 | Precio Unidad: 45.43
+ID venta: 40 | ID vendedor: 4 | ID Producto: 18 | Cantidad: 135 | Precio Unidad: 58.67
+ID venta: 42 | ID vendedor: 2 | ID Producto: 19 | Cantidad: 147 | Precio Unidad: 49.74
+ID venta: 45 | ID vendedor: 10 | ID Producto: 17 | Cantidad: 105 | Precio Unidad: 44.29
+ID venta: 46 | ID vendedor: 2 | ID Producto: 20 | Cantidad: 109 | Precio Unidad: 10.13
+ID venta: 47 | ID vendedor: 7 | ID Producto: 1 | Cantidad: 107 | Precio Unidad: 56.32
+ID venta: 48 | ID vendedor: 8 | ID Producto: 3 | Cantidad: 102 | Precio Unidad: 53.28
+ID venta: 50 | ID vendedor: 6 | ID Producto: 10 | Cantidad: 123 | Precio Unidad: 19.24
+ID venta: 51 | ID vendedor: 5 | ID Producto: 8 | Cantidad: 148 | Precio Unidad: 22.91
+ID venta: 53 | ID vendedor: 7 | ID Producto: 19 | Cantidad: 146 | Precio Unidad: 36.89
+ID venta: 54 | ID vendedor: 8 | ID Producto: 16 | Cantidad: 103 | Precio Unidad: 34.26
+ID venta: 67 | ID vendedor: 10 | ID Producto: 2 | Cantidad: 116 | Precio Unidad: 29.72
+ID venta: 72 | ID vendedor: 4 | ID Producto: 14 | Cantidad: 149 | Precio Unidad: 49.21
+ID venta: 73 | ID vendedor: 7 | ID Producto: 5 | Cantidad: 131 | Precio Unidad: 47.26
+ID venta: 74 | ID vendedor: 8 | ID Producto: 16 | Cantidad: 115 | Precio Unidad: 17.86
+ID venta: 75 | ID vendedor: 7 | ID Producto: 20 | Cantidad: 112 | Precio Unidad: 48.87
+ID venta: 77 | ID vendedor: 8 | ID Producto: 19 | Cantidad: 114 | Precio Unidad: 23.62
+ID venta: 78 | ID vendedor: 3 | ID Producto: 13 | Cantidad: 147 | Precio Unidad: 26.12
+ID venta: 81 | ID vendedor: 3 | ID Producto: 4 | Cantidad: 127 | Precio Unidad: 51.1
+ID venta: 85 | ID vendedor: 2 | ID Producto: 9 | Cantidad: 131 | Precio Unidad: 10.84
+ID venta: 88 | ID vendedor: 7 | ID Producto: 12 | Cantidad: 112 | Precio Unidad: 18.68
+ID venta: 89 | ID vendedor: 7 | ID Producto: 20 | Cantidad: 131 | Precio Unidad: 57.04
+ID venta: 90 | ID vendedor: 3 | ID Producto: 20 | Cantidad: 101 | Precio Unidad: 57.04
+ID venta: 91 | ID vendedor: 1 | ID Producto: 16 | Cantidad: 125 | Precio Unidad: 15.81
+ID venta: 92 | ID vendedor: 9 | ID Producto: 10 | Cantidad: 150 | Precio Unidad: 50.6
+ID venta: 96 | ID vendedor: 7 | ID Producto: 15 | Cantidad: 101 | Precio Unidad: 31.92
+ID venta: 97 | ID vendedor: 6 | ID Producto: 2 | Cantidad: 150 | Precio Unidad: 53.67
+ID venta: 99 | ID vendedor: 8 | ID Producto: 9 | Cantidad: 134 | Precio Unidad: 25.05
+ID venta: 100 | ID vendedor: 8 | ID Producto: 3 | Cantidad: 118 | Precio Unidad: 54.34
+ID venta: 102 | ID vendedor: 10 | ID Producto: 2 | Cantidad: 145 | Precio Unidad: 15.33
+ID venta: 104 | ID vendedor: 2 | ID Producto: 7 | Cantidad: 137 | Precio Unidad: 12.57
+ID venta: 108 | ID vendedor: 4 | ID Producto: 13 | Cantidad: 134 | Precio Unidad: 15.49
+ID venta: 113 | ID vendedor: 4 | ID Producto: 16 | Cantidad: 109 | Precio Unidad: 38.84
+ID venta: 116 | ID vendedor: 2 | ID Producto: 20 | Cantidad: 113 | Precio Unidad: 19.19
+ID venta: 122 | ID vendedor: 5 | ID Producto: 15 | Cantidad: 136 | Precio Unidad: 52.01
+ID venta: 133 | ID vendedor: 6 | ID Producto: 3 | Cantidad: 103 | Precio Unidad: 59.43
+ID venta: 135 | ID vendedor: 5 | ID Producto: 8 | Cantidad: 146 | Precio Unidad: 45.17
+ID venta: 137 | ID vendedor: 6 | ID Producto: 15 | Cantidad: 104 | Precio Unidad: 17.59
+ID venta: 139 | ID vendedor: 5 | ID Producto: 19 | Cantidad: 125 | Precio Unidad: 37.86
+ID venta: 141 | ID vendedor: 6 | ID Producto: 10 | Cantidad: 140 | Precio Unidad: 24.88
+ID venta: 146 | ID vendedor: 1 | ID Producto: 18 | Cantidad: 138 | Precio Unidad: 11.94
+ID venta: 154 | ID vendedor: 4 | ID Producto: 5 | Cantidad: 130 | Precio Unidad: 45.43
+ID venta: 159 | ID vendedor: 7 | ID Producto: 14 | Cantidad: 147 | Precio Unidad: 34.19
+ID venta: 163 | ID vendedor: 9 | ID Producto: 19 | Cantidad: 106 | Precio Unidad: 24.99
+ID venta: 170 | ID vendedor: 5 | ID Producto: 4 | Cantidad: 107 | Precio Unidad: 23.62
+ID venta: 174 | ID vendedor: 2 | ID Producto: 1 | Cantidad: 134 | Precio Unidad: 32.4
+ID venta: 179 | ID vendedor: 1 | ID Producto: 11 | Cantidad: 124 | Precio Unidad: 49.5
+ID venta: 186 | ID vendedor: 3 | ID Producto: 10 | Cantidad: 138 | Precio Unidad: 18.42
+ID venta: 191 | ID vendedor: 5 | ID Producto: 9 | Cantidad: 121 | Precio Unidad: 11.92
+ID venta: 194 | ID vendedor: 2 | ID Producto: 14 | Cantidad: 136 | Precio Unidad: 55.32
+ID venta: 196 | ID vendedor: 3 | ID Producto: 14 | Cantidad: 150 | Precio Unidad: 51.54
+ID venta: 197 | ID vendedor: 7 | ID Producto: 13 | Cantidad: 117 | Precio Unidad: 48.08
+ID venta: 198 | ID vendedor: 8 | ID Producto: 1 | Cantidad: 147 | Precio Unidad: 45.43

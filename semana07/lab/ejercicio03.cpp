@@ -43,7 +43,7 @@ void leerVenta() {
   int iVentaSospechosa = 0;
 
   while (archivo.read((char *)&v, sizeof(Venta))) {
-    // cout << "ID venta: " << v.idVenta << " | ID vendedor: " << v.idVendedor
+    // archivoSalida << "ID venta: " << v.idVenta << " | ID vendedor: " << v.idVendedor
     //      << " | ID Producto: " << v.idProducto << " | Cantidad: " <<
     //      v.cantidad
     //      << " | Precio Unidad: " << v.precioUnitario << endl;
@@ -100,6 +100,7 @@ void leerVenta() {
     }
     n++;
   }
+  archivo.close();
 
   Vendedor vendedorMaximo = vendedor[0];
   for (int i = 0; i < iVendedor; i++) {
@@ -114,41 +115,54 @@ void leerVenta() {
     }
   }
 
+  // GUARDAR EN ARCHIVO
+  ofstream archivoSalida;
+  const string archivoDir = "./salidas/reporte.txt";
 
-  cout << "--- REPORTE GENERAL DE VENTAS ----"<<endl;
-  cout << endl;
-  cout << "Total de registros: " << totalRegistros << endl;
-  cout << endl;
-  cout << "MONTO TOTAL VENDIDO:\n";
-  cout << "S/." << montoTotalVendido << endl;
-  cout << endl;
+  archivoSalida.open(archivoDir);
+  if (!archivoSalida){
+    cerr << "No se pudo abrir el archivo de reporte.\n";
+  }
 
-  cout << " ---------------------------------------\n";
-  cout << "VENDEDOR CON MAYOR RECAUDACIÓN:\n";
-  cout << "ID Vendedor: " << vendedorMaximo.id << endl;
-  cout << "Total vendido: S/." << vendedorMaximo.ventaTotal << endl;
-  cout << endl;
 
-  cout << " ---------------------------------------\n";
-  cout << "PRODUCTO MÁS VENDIDO: \n"
+  archivoSalida << "--- REPORTE GENERAL DE VENTAS ----"<<endl;
+  archivoSalida << endl;
+  archivoSalida << "Total de registros: " << totalRegistros << endl;
+  archivoSalida << endl;
+  archivoSalida << "MONTO TOTAL VENDIDO:\n";
+  archivoSalida << "S/." << montoTotalVendido << endl;
+  archivoSalida << endl;
+
+  archivoSalida << "---------------------------------------\n";
+  archivoSalida << "VENDEDOR CON MAYOR RECAUDACIÓN:\n";
+  archivoSalida << "ID Vendedor: " << vendedorMaximo.id << endl;
+  archivoSalida << "Total vendido: S/." << vendedorMaximo.ventaTotal << endl;
+  archivoSalida << endl;
+
+  archivoSalida << "---------------------------------------\n";
+  archivoSalida << "PRODUCTO MÁS VENDIDO: \n"
        << "ID Producto: " << productoMasVendido.id << endl
        << "Total Unidades: " << productoMasVendido.cantidadVendida << endl;
-  cout << endl;
+  archivoSalida << endl;
 
-  cout << " ---------------------------------------\n";
-  cout << "VENTAS SOSPECHOSAS (cantidad > 100):" << endl;
+  archivoSalida << "---------------------------------------\n";
+  archivoSalida << "VENTAS SOSPECHOSAS (cantidad > 100):" << endl;
+  archivoSalida << endl;
   int cantidadVentasSospechosas = 0;
   for (int i = 0; i < iVentaSospechosa; i++) {
     cantidadVentasSospechosas++;
-    cout << "ID venta: " << ventaSospechosa[i].idVenta
+    archivoSalida << "ID venta: " << ventaSospechosa[i].idVenta
          << " | ID vendedor: " << ventaSospechosa[i].idVendedor
          << " | ID Producto: " << ventaSospechosa[i].idProducto
          << " | Cantidad: " << ventaSospechosa[i].cantidad
          << " | Precio Unidad: " << ventaSospechosa[i].precioUnitario << endl;
   }
 
-  // cout << cantidadVentasSospechosas << endl;
-  archivo.close();
+  // archivoSalida << cantidadVentasSospechosas << endl;
+  archivoSalida.close();
+  delete [] vendedor;
+  delete [] productos;
+  delete [] ventaSospechosa;
 }
 
 int main() {
