@@ -52,7 +52,6 @@ void leerVenta() {
 
     // VENDEDORES
     if (iVendedor == 0) {
-      // vendedorArray[iVendedor] = v.idVendedor;
       vendedor[0].id = v.idVendedor;
       vendedor[0].ventaTotal = v.cantidad * v.precioUnitario;
       iVendedor++;
@@ -104,13 +103,13 @@ void leerVenta() {
   archivo.close();
 
   Vendedor vendedorMaximo = vendedor[0];
-  for (int i = 0; i < iVendedor; i++) {
+  for (int i = 1; i < iVendedor; i++) {
     if (vendedorMaximo.ventaTotal < vendedor[i].ventaTotal) {
       vendedorMaximo = vendedor[i];
     }
   }
   Producto productoMasVendido = productos[0];
-  for (int i = 0; i < iProducto; i++) {
+  for (int i = 1; i < iProducto; i++) {
     if (productoMasVendido.cantidadVendida < productos[i].cantidadVendida) {
       productoMasVendido = productos[i];
     }
@@ -149,9 +148,7 @@ void leerVenta() {
   archivoSalida << "---------------------------------------\n";
   archivoSalida << "VENTAS SOSPECHOSAS (cantidad > 100):" << endl;
   archivoSalida << endl;
-  int cantidadVentasSospechosas = 0;
   for (int i = 0; i < iVentaSospechosa; i++) {
-    cantidadVentasSospechosas++;
     archivoSalida << "ID venta: " << ventaSospechosa[i].idVenta
                   << " | Vendedor: " << ventaSospechosa[i].idVendedor
                   << " | Producto: " << ventaSospechosa[i].idProducto
