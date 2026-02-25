@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Libro::Libro() : codigo(0), titulo(""), prestado(false) {}
+Libro::Libro() : codigo(0), titulo(""), prestado(false) {};
 Libro::Libro(int c, const char *t) : codigo(c), titulo(""), prestado(false) {
   if (c < 0) {
     cerr << "Codigo invalido, programa terminado\n";
@@ -12,7 +12,7 @@ Libro::Libro(int c, const char *t) : codigo(c), titulo(""), prestado(false) {
   }
   codigo = c;
   strcpy(titulo, t);
-}
+};
 Libro::~Libro() {};
 
 // accesores (getters)
@@ -27,7 +27,9 @@ void Libro::setCodigo(int c){
 void Libro::setTitulo(char t[50]){
     strcpy(titulo, t);
 };
-void setPrestado(bool p);
+void Libro::setPrestado(bool p){
+    prestado = p;
+};
 
 void Libro::mostrarInfo() const {
   cout << "Titutlo: " << titulo << " | Codigo: " << codigo << " | "
