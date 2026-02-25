@@ -15,6 +15,19 @@ void insertionsort(int arr[], int n) {
   }
 }
 
+void leerArchivo(ifstream &archivo, int arr[], int &i) {
+  int lectura;
+  while (archivo >> lectura) {
+    // cout << lectura1 << endl;
+    if (lectura == -1) {
+      break;
+    }
+    arr[i] = lectura;
+    i++;
+  };
+  archivo.close();
+}
+
 void abrirArchivo() {
   const string direccion1 = "./entradas/archivo1.txt";
   const string direccion2 = "./entradas/archivo2.txt";
@@ -25,37 +38,19 @@ void abrirArchivo() {
 
   archivo1.open(direccion1);
 
-  int arr[50];
-
   if (!archivo1) {
     cerr << "Error al abrir el archivo 1 para la lectura" << endl;
     return;
   }
   archivo2.open(direccion2);
   if (!archivo2) {
-    cerr << "Error al abrir el archivo 1 para la lectura" << endl;
+    cerr << "Error al abrir el archivo 2 para la lectura" << endl;
     return;
   }
-  int lectura;
   int i = 0;
-  while (archivo1 >> lectura) {
-    // cout << lectura1 << endl;
-    if (lectura == -1) {
-      break;
-    }
-    arr[i] = lectura;
-    i++;
-  };
-  archivo1.close();
-  while (archivo2 >> lectura) {
-    // cout << lectura1 << endl;
-    if (lectura == -1) {
-      break;
-    }
-    arr[i] = lectura;
-    i++;
-  };
-  archivo2.close();
+  int arr[50];
+  leerArchivo(archivo1, arr, i);
+  leerArchivo(archivo2, arr, i);
 
   archivoSalida.open(direccionSalida);
 
