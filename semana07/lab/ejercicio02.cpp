@@ -1,8 +1,6 @@
-#include <cstring>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
-#include <string>
 
 using namespace std;
 
@@ -21,22 +19,6 @@ struct Estudiante {
   int numero;
   double promedio;
 };
-
-// void insertionSort(Estudiante e[], int n) {
-//   for (int i = 0; i < n; i++) {
-//     Estudiante key = e[i];
-//     int j = i - 1;
-//     while ((j >= 0 and e[j].apellido > key.apellido) or
-//            (j >= 0 and e[j].apellido == key.apellido and
-//             e[j].nombre > key.nombre) or
-//            (j >= 0 and e[j].apellido == key.apellido and
-//             e[j].nombre == key.nombre and e[j].nota > key.nota)) {
-//       e[j + 1] = e[j];
-//       j = j - 1;
-//     }
-//     e[j + 1] = key;
-//   }
-// }
 
 void leerArchivo() {
 
