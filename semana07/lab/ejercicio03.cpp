@@ -43,7 +43,8 @@ void leerVenta() {
   int iVentaSospechosa = 0;
 
   while (archivo.read((char *)&v, sizeof(Venta))) {
-    // archivoSalida << "ID venta: " << v.idVenta << " | ID vendedor: " << v.idVendedor
+    // archivoSalida << "ID venta: " << v.idVenta << " | ID vendedor: " <<
+    // v.idVendedor
     //      << " | ID Producto: " << v.idProducto << " | Cantidad: " <<
     //      v.cantidad
     //      << " | Precio Unidad: " << v.precioUnitario << endl;
@@ -120,12 +121,11 @@ void leerVenta() {
   const string archivoDir = "./salidas/reporte.txt";
 
   archivoSalida.open(archivoDir);
-  if (!archivoSalida){
+  if (!archivoSalida) {
     cerr << "No se pudo abrir el archivo de reporte.\n";
   }
 
-
-  archivoSalida << "--- REPORTE GENERAL DE VENTAS ----"<<endl;
+  archivoSalida << "--- REPORTE GENERAL DE VENTAS ----" << endl;
   archivoSalida << endl;
   archivoSalida << "Total de registros: " << totalRegistros << endl;
   archivoSalida << endl;
@@ -141,8 +141,9 @@ void leerVenta() {
 
   archivoSalida << "---------------------------------------\n";
   archivoSalida << "PRODUCTO MÁS VENDIDO: \n"
-       << "ID Producto: " << productoMasVendido.id << endl
-       << "Total Unidades: " << productoMasVendido.cantidadVendida << endl;
+                << "ID Producto: " << productoMasVendido.id << endl
+                << "Total Unidades: " << productoMasVendido.cantidadVendida
+                << endl;
   archivoSalida << endl;
 
   archivoSalida << "---------------------------------------\n";
@@ -152,17 +153,15 @@ void leerVenta() {
   for (int i = 0; i < iVentaSospechosa; i++) {
     cantidadVentasSospechosas++;
     archivoSalida << "ID venta: " << ventaSospechosa[i].idVenta
-         << " | ID vendedor: " << ventaSospechosa[i].idVendedor
-         << " | ID Producto: " << ventaSospechosa[i].idProducto
-         << " | Cantidad: " << ventaSospechosa[i].cantidad
-         << " | Precio Unidad: " << ventaSospechosa[i].precioUnitario << endl;
+                  << " | Vendedor: " << ventaSospechosa[i].idVendedor
+                  << " | Producto: " << ventaSospechosa[i].idProducto
+                  << " | Cantidad: " << ventaSospechosa[i].cantidad << endl;
   }
 
-  // archivoSalida << cantidadVentasSospechosas << endl;
   archivoSalida.close();
-  delete [] vendedor;
-  delete [] productos;
-  delete [] ventaSospechosa;
+  delete[] vendedor;
+  delete[] productos;
+  delete[] ventaSospechosa;
 }
 
 int main() {
