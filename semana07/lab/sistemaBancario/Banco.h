@@ -7,12 +7,14 @@ const int MAX_CUENTAS = 100;
 class Banco {
 private:
   Cuenta cuentas[MAX_CUENTAS];
+  int cantidadCuentas;
 
 public:
   Banco();
   Banco(int numeros[], std::string titulares[], double saldos[], int n);
   ~Banco();
-  void transferir(int cuentaDepositante, int cuentaReceptora);
-
+  int getCantidadCuentas();
+  void transferir(int cuentaDepositante, int cuentaReceptora, double monto);
+  int buscarCuenta(int numeroCuenta);
 };
 #endif

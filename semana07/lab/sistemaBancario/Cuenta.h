@@ -7,16 +7,19 @@ private:
   int numero;
   std::string titular;
   double saldo;
-  bool activo;
+  bool bloqueado;
 
 public:
   Cuenta();
   Cuenta(int num, std::string nombre, double saldoInicial);
   ~Cuenta();
-  void depositar(double monto);
+  int getNumeroCuenta();
+  double getSaldo();
+  bool getEstado();
+  void setSaldo(double monto);
+  bool depositar(double monto);
   void retirar(double monto);
   void mostrarCuenta();
-  void interesMensual(int meses);
-  void bloquearCuenta();
+  void interesMensual(double tasa, int meses);
 };
 #endif
