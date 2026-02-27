@@ -39,4 +39,5 @@ int main() {
     crearCuenta(123, "Carlos", 1000);
     retirar(1500);   // ¿Qué pasa aquí?
     mostrarCuenta();
+    return 0;
 }
