@@ -2,77 +2,65 @@
 #include <fstream>
 #include <iostream>
 
+const int N = 81; // uno extra para el caracter nulo
+const int FILAS = 21;
 using namespace std;
+
+struct Punto {
+  int x;
+  int y;
+};
 
 void graficarSeno(ofstream &archivo) {
   // Graficar de 0 a 2pi es igual para una cantidad de 80
   // es igual a muestrar un dato cada 2*pi/80 o 9°
-  int N = 80;
-  int COLS = 21;
   double pi = acos(-1);
   int contador = 0;
-  int arrX[N];
-  int arrY[N];
-  char cad[N][COLS];
-  for (int i = 0; i < COLS; i++) {
-    for (int j = 0; j < N; j++) {
-      double y = 10 * sin(j * 2 * pi / 80 * 5);
-      if (i == abs(int(y))) {
-        arrX[contador] = int(y) + 10;
-        arrY[contador] = j;
-        contador++;
-      }
-    }
-  }
-  // for (int i = 0; i < contador; i++) {
-  //   cout << arrX[i] << " " << arrY[i] << endl;
-  // }
+  char cad[FILAS][N];
+  Punto puntos[N];
 
-  for (int i = 0; i < COLS; i++) {
-    for (int j = 0; j < N; j++) {
-        cad[i][j]='.';
+  for (int i = 0; i < N; i++) {
+    // double y = 10*sin(i * 2 * pi / 80 * 5);
+    double y = 10 * (1 - sin(i * 2 * pi / 80 * 5));
+    if (int(y) == 10) {
+      y = 9;
     }
+    puntos[i].x = i;
+    puntos[i].y = int(y);
+    // cout << "x: " << puntos[i].x << " y: " << puntos[i].y << endl;
   }
-  for (int i = 0; i < COLS; i++) {
+
+  for (int i = 0; i < FILAS; i++) {
     for (int j = 0; j < N; j++) {
-      // ejes
-      if (i == 10) {
-        if (j == 0) {
-          cout << " ";
-          archivo << " ";
-          cad[i][j] = ' ';
-        } else {
-          cout << "-";
-          archivo << "-";
-          cad[i][j] = '-';
+      cad[i][j] = ' ';
+      bool dibujadoPunto = false;
+      for (int k = 0; k < N; k++) {
+        if (contador < N and i == puntos[k].y and j == puntos[k].x) {
           if (j == N - 1) {
             cad[i][j] = '\n';
-            cout << endl;
-            archivo << endl;
+            break;
           }
-        }
-      } else {
-        if (j == 0 and i != 10) {
-          cad[i][j] = '|';
-          cout << "|" << endl;
-          archivo << "|" << endl;
+          cad[i][j] = '*';
+          dibujadoPunto = true;
+          contador++;
+          break;
         }
       }
+      if (!dibujadoPunto) {
+        if (j == 0) {
+          cad[i][j] = '|';
+        } else if (j == N - 1) {
+          cad[i][j] = '\n';
+        } else if (i == FILAS / 2) {
+          cad[i][j] = '-';
+        } else {
+          cad[i][j] = ' ';
+        }
+      }
+      cout << cad[i][j];
+      archivo << cad[i][j];
     }
   }
-  for (int i = 0; i < COLS; i++) {
-    for (int j = 0; j < N; j++) {
-        cout << cad[i][j];
-    }
-  }
-  // bool puntoImpreso = false;
-  // // puntos
-  // if (i == arrY[i] and j == arrX[j]) {
-  //   cout << i << " " << j << endl;
-  //   // cout << "*";
-  //   c++;
-  //   puntoImpreso = true;
-  // }
 }
 
 void escribirArchivo(const string &direccionSalida) {
@@ -84,7 +72,6 @@ void escribirArchivo(const string &direccionSalida) {
     return;
   }
   graficarSeno(archivoSalida);
-
   archivoSalida.close();
 }
 
