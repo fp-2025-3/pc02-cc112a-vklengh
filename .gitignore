@@ -1,0 +1,8 @@
+build/
+vgcore
+vgcore.*
+*.dat
+*.bin
+
+*.swp
+*.tmp
