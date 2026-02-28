@@ -13,14 +13,13 @@ struct Punto {
 
 void graficarSeno(ofstream &archivo) {
   // Graficar de 0 a 2pi es igual para una cantidad de 80
-  // es igual a muestrar un dato cada 2*pi/80 o 9°
+  // es igual a muestrear un dato cada 2*pi/80 o 9°
   double pi = acos(-1);
   int contador = 0;
   char cad[FILAS][N];
   Punto puntos[N];
 
   for (int i = 0; i < N; i++) {
-    // double y = 10*sin(i * 2 * pi / 80 * 5);
     double y = 10 * (1 - sin(i * 2 * pi / 80 * 5));
     if (int(y) == 10) {
       y = 9;
@@ -57,10 +56,11 @@ void graficarSeno(ofstream &archivo) {
           cad[i][j] = ' ';
         }
       }
-      cout << cad[i][j];
+      // cout << cad[i][j];
       archivo << cad[i][j];
     }
   }
+  cout << "Se creó el archivo\n";
 }
 
 void escribirArchivo(const string &direccionSalida) {
