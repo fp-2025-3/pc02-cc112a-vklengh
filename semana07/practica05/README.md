@@ -11,7 +11,7 @@
 
 [reporteAlumnos.txt](salidas/reporteAlumnos.txt)
 
-![alt text](assets/problema01.png)
+![alt text](assets/problema01v1.png)
 
 ## Pregunta 2:
 
