@@ -9,7 +9,7 @@
 
 #### Archivo completo en:
 
-![alt text](salidas/reporteAlumnos.txt)
+[reporteAlumnos.txt](salidas/reporteAlumnos.txt)
 
 ![alt text](assets/problema01.png)
 
@@ -21,7 +21,7 @@
 
 #### Archivo completo en:
 
-![alt text](salidas/grafico.txt)
+[grafico.txt](salidas/grafico.txt)
 
 ![alt text](assets/problema03.png)
 
@@ -29,7 +29,7 @@
 
 #### Archivo completo en:
 
-![alt text](salidas/reporte.txt)
+[reporte.txt](salidas/reporte.txt)
 
 #### Inicio del archivo:
 
