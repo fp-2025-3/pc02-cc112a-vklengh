@@ -39,8 +39,8 @@ void abrirArchivo(const string &direccionEntrada, const string &direccionSalida)
     int codigo = stoi(linea.substr(0, p1));
     string nombre = linea.substr(p1 + 1, p2);
     int nota1 = stoi(linea.substr(p1 + p2 + 2, p3));
-    int nota2 = stoi(linea.substr(p1 + p2 + p3 + 3, p3));
-    int nota3 = stoi(linea.substr(p1 + p2 + p3 + p4 + 4, p3));
+    int nota2 = stoi(linea.substr(p1 + p2 + p3 + 3, p4));
+    int nota3 = stoi(linea.substr(p1 + p2 + p3 + p4 + 4));
     double promedio = (nota1 + nota2 + nota3) / 3.;
     string condicion;
     if (nota1 < 5 or nota2 < 5 or nota3 < 5) {
