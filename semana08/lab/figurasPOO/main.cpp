@@ -23,27 +23,28 @@ int main() {
   Figura *f2 = new Circulo("circ1", 7, 8, 9, 3);
   int cant = 2;
   Figura **f = new Figura *[cant] { f1, f2 };
-  GestorFiguras gestor(f, cant, 5);
+  GestorFiguras gestor(f, cant, 2);
   // gestor.mostrarFiguras();
   gestor.mostrarCapacidad();
-  gestor.aumentarCapacidad(10);
+  // gestor.aumentarCapacidad(10);
 
-  Figura *f3 = new Rectangulo("rec2", 4,5,6, 15,20);
-  Figura *f4 = new Circulo("circ2",11,12,13,16);
-  gestor.agregarFiguras(f3);
+  Figura *f3 = new Rectangulo("rec2", 4, 5, 6, 15, 20);
+  Figura *f4 = new Circulo("circ2", 11, 12, 13, 16);
   gestor.agregarFiguras(f4);
+  gestor.agregarFiguras(f3);
 
-  gestor.mostrarFiguras();
-  cout << "Area total: "<<gestor.area()<<endl;
-  cout << "Perimetro total: "<<gestor.perimetro()<<endl;
+  // gestor.mostrarFiguras();
+  // cout << "Area total: "<<gestor.area()<<endl;
+  // cout << "Perimetro total: "<<gestor.perimetro()<<endl;
+
+  cout << gestor.getInfo() << endl;
 
   delete[] f;
   f = nullptr;
   delete f3;
   delete f4;
-
-
-  // gestor.mostrarFiguras();
+  string salida = "salidas/archivo.txt";
+  gestor.guardarArchivo(salida);
 
   return 0;
 }

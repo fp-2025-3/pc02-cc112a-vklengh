@@ -24,6 +24,9 @@ public:
   virtual double area() const = 0;
   virtual double perimetro() const = 0;
   virtual void imprimir() const = 0;
+  virtual std::string getNombre() const = 0;
+  virtual double* getColor() const = 0;
+  virtual std::string getInfo() const = 0;
 };
 
 #endif

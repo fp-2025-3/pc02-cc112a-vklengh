@@ -52,3 +52,30 @@ void Figura::imprimir() const {
   std::cout << "Colores R: " << colorRGB[0] << " | G: " << colorRGB[1]
             << " | B: " << colorRGB[2] << std::endl;
 };
+
+std::string Figura::getNombre() const { return nombre; };
+double *Figura::getColor() const { return colorRGB; };
+
+std::string Figura::getInfo() const {
+  std::string texto = "";
+  texto.append("Nombre: ");
+  texto.append(nombre);
+  texto.append("\n");
+
+  for (int i = 0; i < 3; i++) {
+    if (i == 0) {
+      texto.append("Color R: ");
+    }
+    else if (i == 1) {
+      texto.append("Color G: ");
+    }
+    else if (i == 2) {
+      texto.append("Color B: ");
+    }
+    std::string color = std::to_string(colorRGB[i]);
+    texto.append(color.substr(0, color.find(".") + 3));
+    texto.append("\n");
+  }
+
+  return texto;
+};

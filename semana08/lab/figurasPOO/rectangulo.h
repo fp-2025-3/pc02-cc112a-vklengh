@@ -25,6 +25,9 @@ public:
   double area() const override ;
   double perimetro() const override ;
   void imprimir() const override;
+  std::string getNombre() const override;
+  double* getColor() const override;
+  std::string getInfo() const override;
 };
 
 #endif

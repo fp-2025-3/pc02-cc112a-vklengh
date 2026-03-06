@@ -22,7 +22,8 @@ public:
   virtual void mostrarCapacidad();
   virtual double area();
   virtual double perimetro();
-  virtual void guardarArchivo();
+  virtual std::string getInfo();
+  virtual void guardarArchivo(std::string &direccion);
 };
 
 #endif

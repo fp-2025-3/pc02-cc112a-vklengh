@@ -1,0 +1,40 @@
+Rectangulo:
+Nombre: rec1
+Color R: 1.00
+Color G: 2.00
+Color B: 3.00
+Base: 4.00
+Altura: 5.00
+Area: 20.00
+Perimetro: 18.00
+
+Circulo:
+Nombre: circ1
+Color R: 7.00
+Color G: 8.00
+Color B: 9.00
+Radio: 3.00
+Area: 28.27
+Perimetro: 18.84
+
+Circulo:
+Nombre: circ2
+Color R: 11.00
+Color G: 12.00
+Color B: 13.00
+Radio: 16.00
+Area: 804.24
+Perimetro: 100.53
+
+Rectangulo:
+Nombre: rec2
+Color R: 4.00
+Color G: 5.00
+Color B: 6.00
+Base: 15.00
+Altura: 20.00
+Area: 300.00
+Perimetro: 70.00
+
+Area total: 1152.52
+Perimetro: 207.38

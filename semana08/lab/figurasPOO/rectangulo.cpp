@@ -10,7 +10,7 @@ Rectangulo::Rectangulo(std::string nom, double r, double g, double b,
                        double bas, double alt)
     : Figura(nom, r, g, b), base(bas), altura(alt) {};
 
-Rectangulo::Rectangulo(const Rectangulo &otro) : Figura(otro){
+Rectangulo::Rectangulo(const Rectangulo &otro) : Figura(otro) {
   base = otro.base;
   altura = otro.altura;
 }
@@ -39,4 +39,32 @@ void Rectangulo::imprimir() const {
   std::cout << "Area del rectangulo: " << Rectangulo::area() << std::endl;
   std::cout << "Perimetro del rectangulo: " << Rectangulo::perimetro()
             << std::endl;
+};
+std::string Rectangulo::getNombre() const { return nombre; };
+double *Rectangulo::getColor() const { return colorRGB; };
+std::string Rectangulo::getInfo() const {
+  std::string texto = "Rectangulo:\n";
+  texto.append(Figura::getInfo());
+  texto.append("Base: ");
+  std::string temp = std::to_string(base);
+  texto.append(temp.substr(0, temp.find(".") + 3));
+  texto.append("\n");
+
+  texto.append("Altura: ");
+  temp = std::to_string(altura);
+  texto.append(temp.substr(0, temp.find(".") + 3));
+
+  texto.append("\n");
+
+  texto.append("Area: ");
+  temp = std::to_string(Rectangulo::area());
+  texto.append(temp.substr(0, temp.find(".") + 3));
+  texto.append("\n");
+
+  texto.append("Perimetro: ");
+  temp = std::to_string(Rectangulo::perimetro());
+  texto.append(temp.substr(0, temp.find(".") + 3));
+
+  texto.append("\n\n");
+  return texto;
 };
