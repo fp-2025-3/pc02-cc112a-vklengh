@@ -1,7 +1,7 @@
-#include "circulo.h"
-#include "figura.h"
-#include "gestorFiguras.h"
-#include "rectangulo.h"
+#include "src/circulo.h"
+#include "src/rectangulo.h"
+#include "src/figura.h"
+#include "src/gestorFiguras.h"
 #include <iostream>
 
 using namespace std;
