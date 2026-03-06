@@ -4,7 +4,7 @@
 ### Acualizaciones:
 
 #### 7. **Semana 8**
-[Teoria semana 08](semana08/lab)
+[Laboratorio semana 08](semana08/lab)
 
 [Teoria semana 08](semana08/teoria)
 

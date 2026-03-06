@@ -131,6 +131,7 @@ void leerVenta() {
 
   if (!archivoSalida) {
     cerr << "No se pudo abrir el archivo de reporte.\n";
+    return;
   }
   archivoSalida.setf(ios::fixed);
 
