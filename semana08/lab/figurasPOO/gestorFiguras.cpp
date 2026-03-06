@@ -105,17 +105,21 @@ double GestorFiguras::perimetro() {
 };
 std::string GestorFiguras::getInfo() {
   std::string info = "";
+  double perimetroTotal = 0.;
+  double areaTotal = 0.;
   for (int i = 0; i < cantidad; i++) {
-    std::string figInfo = figuras[i]->getInfo();
-    info.append(figInfo);
+    SalidaInfo figInfo = figuras[i]->getInfo();
+    perimetroTotal += figInfo.perimetro;
+    areaTotal += figInfo.area;
+    info.append(figInfo.info);
   }
   info.append("Area total: ");
-  std::string temp = std::to_string(GestorFiguras::area());
+  std::string temp = std::to_string(areaTotal);
   info.append(temp.substr(0, temp.find(".") + 3));
   info.append("\n");
 
   info.append("Perimetro: ");
-  temp = std::to_string(GestorFiguras::perimetro());
+  temp = std::to_string(perimetroTotal);
   info.append(temp.substr(0, temp.find(".") + 3));
   info.append("\n");
 
@@ -132,5 +136,5 @@ void GestorFiguras::guardarArchivo(std::string &direccion) {
   std::string info = GestorFiguras::getInfo();
   archivo << info;
   archivo.close();
-  std::cout << "Archivo guardado correctamente";
+  std::cout << "Archivo guardado correctamente\n";
 };

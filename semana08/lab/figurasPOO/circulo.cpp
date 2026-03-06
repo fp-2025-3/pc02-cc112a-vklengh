@@ -3,6 +3,7 @@
 #include <cmath>
 #include <iostream>
 
+
 const double PI = acos(-1);
 Circulo::Circulo() : Figura(), radio(0.) {};
 
@@ -37,9 +38,10 @@ void Circulo::imprimir() const {
 
 std::string Circulo::getNombre() const { return nombre; };
 double *Circulo::getColor() const { return colorRGB; };
-std::string Circulo::getInfo() const {
+SalidaInfo Circulo::getInfo() const {
+  SalidaInfo info = Figura::getInfo();
   std::string texto = "Circulo:\n";
-  texto.append(Figura::getInfo());
+  texto.append(info.info);
 
   texto.append("Radio: ");
   std::string temp = std::to_string(radio);
@@ -47,14 +49,20 @@ std::string Circulo::getInfo() const {
   texto.append("\n");
 
   texto.append("Area: ");
-  temp = std::to_string(Circulo::area());
+  double area = Circulo::area();
+  temp = std::to_string(area);
   texto.append(temp.substr(0, temp.find(".") + 3));
   texto.append("\n");
 
   texto.append("Perimetro: ");
-  temp = std::to_string(Circulo::perimetro());
+  double perimetro= Circulo::perimetro();
+  temp = std::to_string(perimetro);
   texto.append(temp.substr(0, temp.find(".") + 3));
 
   texto.append("\n\n");
-  return texto;
+  info.info = texto;
+  info.area= area;
+  info.perimetro= perimetro;
+
+  return info;
 };

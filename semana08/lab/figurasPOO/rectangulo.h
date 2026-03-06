@@ -27,7 +27,7 @@ public:
   void imprimir() const override;
   std::string getNombre() const override;
   double* getColor() const override;
-  std::string getInfo() const override;
+  SalidaInfo getInfo() const override;
 };
 
 #endif

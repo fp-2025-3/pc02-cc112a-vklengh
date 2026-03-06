@@ -56,7 +56,7 @@ void Figura::imprimir() const {
 std::string Figura::getNombre() const { return nombre; };
 double *Figura::getColor() const { return colorRGB; };
 
-std::string Figura::getInfo() const {
+SalidaInfo Figura::getInfo() const {
   std::string texto = "";
   texto.append("Nombre: ");
   texto.append(nombre);
@@ -76,6 +76,7 @@ std::string Figura::getInfo() const {
     texto.append(color.substr(0, color.find(".") + 3));
     texto.append("\n");
   }
+  SalidaInfo out = SalidaInfo{texto,0,0};
 
-  return texto;
+  return out;
 };

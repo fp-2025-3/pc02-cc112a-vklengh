@@ -2,6 +2,12 @@
 #define FIGURA_H
 #include <string>
 
+struct SalidaInfo{
+    std::string info;
+    double area;
+    double perimetro;
+};
+
 class Figura {
 protected:
   std::string nombre;
@@ -26,7 +32,7 @@ public:
   virtual void imprimir() const = 0;
   virtual std::string getNombre() const = 0;
   virtual double* getColor() const = 0;
-  virtual std::string getInfo() const = 0;
+  virtual SalidaInfo getInfo() const = 0;
 };
 
 #endif

@@ -42,9 +42,10 @@ void Rectangulo::imprimir() const {
 };
 std::string Rectangulo::getNombre() const { return nombre; };
 double *Rectangulo::getColor() const { return colorRGB; };
-std::string Rectangulo::getInfo() const {
+SalidaInfo Rectangulo::getInfo() const {
+  SalidaInfo info = Figura::getInfo();
   std::string texto = "Rectangulo:\n";
-  texto.append(Figura::getInfo());
+  texto.append(info.info);
   texto.append("Base: ");
   std::string temp = std::to_string(base);
   texto.append(temp.substr(0, temp.find(".") + 3));
@@ -57,14 +58,20 @@ std::string Rectangulo::getInfo() const {
   texto.append("\n");
 
   texto.append("Area: ");
-  temp = std::to_string(Rectangulo::area());
+  double area = Rectangulo::area();
+  temp = std::to_string(area);
   texto.append(temp.substr(0, temp.find(".") + 3));
   texto.append("\n");
 
   texto.append("Perimetro: ");
-  temp = std::to_string(Rectangulo::perimetro());
+  double perimetro = Rectangulo::perimetro();
+  temp = std::to_string(perimetro);
   texto.append(temp.substr(0, temp.find(".") + 3));
 
   texto.append("\n\n");
-  return texto;
+  info.info = texto;
+  info.area = area;
+  info.perimetro = perimetro;
+
+  return info;
 };
