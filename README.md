@@ -4,6 +4,8 @@
 ### Acualizaciones:
 
 #### 7. **Semana 8**
+[Solucionario Examen Final](semana08/examen_final)
+
 [Laboratorio semana 08](semana08/lab)
 
 [Teoria semana 08](semana08/teoria)

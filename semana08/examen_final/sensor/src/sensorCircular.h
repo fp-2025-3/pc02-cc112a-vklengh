@@ -21,10 +21,10 @@ public:
   SensorCircular &operator=(const SensorCircular &otro);
   virtual ~SensorCircular();
   // Metodos virtuales puros
-  virtual SensorCircular *copiar();
-  virtual double areaCobertura();
-  virtual bool detecta(double x, double y);
-  virtual void imprimir();
+  virtual Sensor *copiar() const override ;
+  virtual double areaCobertura() const override;
+  virtual bool detecta(double x, double y) const override;
+  virtual void imprimir() const override;
 };
 
 #endif

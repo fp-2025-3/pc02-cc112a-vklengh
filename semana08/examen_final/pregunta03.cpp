@@ -30,107 +30,107 @@ void crearArchivo(string &direccion, int N) {
   }
   Proyecto *proyectos = new Proyecto[N];
   for (int i = 0; i < N; i++) {
-    cout << "Ingrese id del proyecto: ";
+    cout << "Proyecto " << i + 1 << endl;
+    cout << "ID: ";
     cin >> proyectos[i].id;
 
-    cout << "Ingrese el titulo del proyecto: ";
+    cout << "Titulo: ";
     cin >> proyectos[i].titulo;
 
-    cout << "Ingrese el presupuesto del proyecto: ";
+    cout << "Presupuesto: ";
     cin >> proyectos[i].presupuesto;
 
-    cout << "Ingrese la duracion en meses del proyecto: ";
+    cout << "Duracion (meses): ";
     cin >> proyectos[i].duracionMeses;
+    cout << endl;
   }
   insertionsort(proyectos, N);
   for (int i = 0; i < N; i++) {
     archivo.seekp((i) * sizeof(Proyecto), ios::beg);
     archivo.write((char *)&proyectos[i], sizeof(Proyecto));
-    cout << "ID: " << proyectos[i].id << endl;
-    cout << "Titulo: " << proyectos[i].titulo << endl;
-    cout << "Presupuesto: " << proyectos[i].presupuesto << endl;
-    cout << "Duracion: " << proyectos[i].duracionMeses << " meses" << endl;
+    // cout << "ID: " << proyectos[i].id << endl;
+    // cout << "Titulo: " << proyectos[i].titulo << endl;
+    // cout << "Presupuesto: " << proyectos[i].presupuesto << endl;
+    // cout << "Duracion: " << proyectos[i].duracionMeses << " meses" << endl;
   }
 
   delete[] proyectos;
   proyectos = nullptr;
   archivo.close();
 }
-
 void agregarProyecto(string &direccion) {
-  fstream archivo;
-  archivo.open(direccion, ios::binary | ios::in | ios::out);
+  fstream archivo(direccion, ios::binary | ios::in | ios::out);
   if (!archivo) {
-    cerr << "No se pudo leer archivo.\n";
+    cerr << "No se pudo abrir archivo.\n";
     return;
   }
-  Proyecto proyecto, proyOut;
-  int pos = 1;
 
-  cout << "Ingrese id del proyecto: ";
+  Proyecto proyecto;
+
+  cout << "Nuevo proyecto a insertar\n";
+  cout << "ID: ";
   cin >> proyecto.id;
 
-  cout << "Ingrese el titulo del proyecto: ";
+  int n = 0;
+  Proyecto temp;
+
+  archivo.seekg(0, ios::beg);
+
+  // verificar ID repetido y contar registros
+  while (archivo.read((char *)&temp, sizeof(Proyecto))) {
+    if (temp.id == proyecto.id) {
+      cout << "Error: el ID ya existe.\n";
+      archivo.close();
+      return;
+    }
+    n++;
+  }
+
+  cout << "Titulo: ";
   cin >> proyecto.titulo;
 
-  cout << "Ingrese el presupuesto del proyecto: ";
+  cout << "Presupuesto: ";
   cin >> proyecto.presupuesto;
 
-  cout << "Ingrese la duracion en meses del proyecto: ";
+  cout << "Duracion (meses): ";
   cin >> proyecto.duracionMeses;
-  archivo.seekg((pos) * sizeof(Proyecto), ios::beg);
-  Proyecto copia;
-  while (archivo.read((char *)&proyOut, sizeof(Proyecto))) {
-    // cout << "ID: " << proyOut.id << endl;
-    // cout << "Titulo: " << proyOut.titulo << endl;
-    // cout << "Presupuesto: " << proyOut.presupuesto << endl;
-    // cout << "Duracion: " << proyOut.duracionMeses << " meses" << endl;
-    if (proyOut.presupuesto < proyecto.presupuesto) {
-      break;
-    }
-    pos++;
-    archivo.seekg((pos) * sizeof(Proyecto), ios::beg);
-  }
-  // archivo.seekg((pos) * sizeof(Proyecto), ios::beg);
-  // archivo.read((char *)&proyecto, sizeof(Proyecto) * pos);
-  // cout << "continuando.......\n";
-  archivo.seekg((pos) * sizeof(Proyecto), ios::beg);
-  archivo.read((char *)&copia, sizeof(Proyecto));
-  archivo.seekg((pos+1) * sizeof(Proyecto), ios::beg);
+  cout << endl;
 
-  // cout << "ID: " << copia.id << endl;
-  // cout << "Titulo: " << copia.titulo << endl;
-  // cout << "Presupuesto: " << copia.presupuesto << endl;
-  // cout << "Duracion: " << copia.duracionMeses << " meses" << endl;
-  //
-  // cout << ".....\n";
-  // cout << "ID: " <<proyecto.id << endl;
-  // cout << "Titulo: " << proyecto.titulo << endl;
-  // cout << "Presupuesto: " << proyecto.presupuesto << endl;
-  // cout << "Duracion: " << proyecto.duracionMeses << " meses" << endl;
-  archivo.seekp((pos) * sizeof(Proyecto), ios::beg);
-  archivo.write((char *)&proyecto, sizeof(Proyecto));
-  pos++;
-  while (archivo.read((char *)&proyOut, sizeof(Proyecto))) {
-    copia = proyOut;
-    archivo.seekp((pos) * sizeof(Proyecto), ios::beg);
-    archivo.write((char *)&copia, sizeof(Proyecto));
-    // cout << "ID: " << proyOut.id << endl;
-    // cout << "Titulo: " << proyOut.titulo << endl;
-    // cout << "Presupuesto: " << proyOut.presupuesto << endl;
-    // cout << "Duracion: " << proyOut.duracionMeses << " meses" << endl;
-    copia = proyOut;
+  int pos = 0;
+
+  archivo.clear(); // limpiar EOF
+  archivo.seekg(0, ios::beg);
+
+  // buscar posición de inserción
+  while (pos < n) {
+    archivo.read((char *)&temp, sizeof(Proyecto));
+
+    if (temp.presupuesto < proyecto.presupuesto)
+      break;
+
     pos++;
-    archivo.seekg((pos) * sizeof(Proyecto), ios::beg);
   }
-    archivo.seekp(-sizeof(Proyecto), ios::end);
-    archivo.write((char *)&copia, sizeof(Proyecto));
+
+  int i = n - 1;
+
+  // mover registros hacia la derecha
+  while (i >= pos) {
+    archivo.seekg(i * sizeof(Proyecto), ios::beg);
+    archivo.read((char *)&temp, sizeof(Proyecto));
+
+    archivo.seekp((i + 1) * sizeof(Proyecto), ios::beg);
+    archivo.write((char *)&temp, sizeof(Proyecto));
+
+    i--;
+  }
+
+  // insertar nuevo proyecto
+  archivo.seekp(pos * sizeof(Proyecto), ios::beg);
+  archivo.write((char *)&proyecto, sizeof(Proyecto));
 
   archivo.close();
 }
-
 void leerProyecto(string &direccion) {
-// cp salidas/proyectos1.dat salidas/proyectos.dat
 
   fstream archivo;
   archivo.open(direccion, ios::binary | ios::in | ios::out);
@@ -140,17 +140,13 @@ void leerProyecto(string &direccion) {
   }
   Proyecto proyOut;
   int pos = 0;
+  cout << "Contenido del archivo\n";
   while (archivo.read((char *)&proyOut, sizeof(Proyecto))) {
-    cout << "ID: " << proyOut.id << endl;
-    cout << "Titulo: " << proyOut.titulo << endl;
-    cout << "Presupuesto: " << proyOut.presupuesto << endl;
-    cout << "Duracion: " << proyOut.duracionMeses << " meses" << endl;
+    cout << proyOut.id << " " << proyOut.titulo << " " << proyOut.presupuesto
+         << " " << proyOut.duracionMeses << endl;
     pos++;
     archivo.seekg((pos) * sizeof(Proyecto), ios::beg);
   }
-
-  // archivo.seekg((pos) * sizeof(Proyecto), ios::beg);
-  // archivo.read((char *)&proyecto, sizeof(Proyecto) * pos);
 
   archivo.close();
 }
@@ -158,10 +154,11 @@ void leerProyecto(string &direccion) {
 int main() {
   string dir = "salidas/proyectos.dat";
   int N;
-  cout << "Ingrese la cantidad de proyectos que quiere registrar: ";
+  cout << "Numero de proyectos: ";
   cin >> N;
+  cout << endl;
   crearArchivo(dir, N);
-  leerProyecto(dir);
   agregarProyecto(dir);
+  leerProyecto(dir);
   return 0;
 }

@@ -13,7 +13,7 @@ public:
   // Constructores
   SensorRectangular();
   // constructor de parametros
-  SensorRectangular(std::string,double x, double y, double *pos, double rad);
+  SensorRectangular(std::string i,double x, double y, double *pos, double anch, double alt);
   // constructor de copia profunda (deep copy) vs shallow copy (el sistema lo
   // crea)
   SensorRectangular(const SensorRectangular &otro);
@@ -22,10 +22,10 @@ public:
   SensorRectangular &operator=(const SensorRectangular &otro);
   virtual ~SensorRectangular();
   // Metodos virtuales puros
-  virtual SensorRectangular *copiar();
-  virtual double areaCobertura();
-  virtual bool detecta(double x, double y);
-  virtual void imprimir();
+  virtual Sensor *copiar() const override ;
+  virtual double areaCobertura() const override;
+  virtual bool detecta(double x, double y) const override;
+  virtual void imprimir() const override;
 };
 
 #endif

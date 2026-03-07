@@ -43,4 +43,8 @@ Sensor &Sensor::operator=(const Sensor &otro) {
 
 Sensor::~Sensor() { delete[] posicion; }
 
-void Sensor::imprimir() const {};
+void Sensor::imprimir() const {
+  std::cout << "ID: " << id;
+  std::cout << "X: " << posicion[0] << std::endl;
+  std::cout << "Y: " << posicion[1] << std::endl;
+};

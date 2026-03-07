@@ -11,7 +11,7 @@ public:
   // Constructores
   Sensor();
   // constructor de parametros
-  Sensor(std::string,double x, double y, double *pos);
+  Sensor(std::string i,double x, double y, double *pos);
   // constructor de copia profunda (deep copy) vs shallow copy (el sistema lo
   // crea)
   Sensor(const Sensor &otro);

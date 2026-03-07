@@ -15,19 +15,16 @@ int main() {
   // algo
   Punto *p1 = new Punto;
   Punto *p2 = new Punto;
-  Punto *pLejano = new Punto;
   leerPunto(p1);
   leerPunto(p2);
-  pLejano = masLejano(p1, p2);
+  Punto *pLejano = masLejano(p1, p2);
   cout << "Punto mas lejano x: " << (*pLejano).x << " | y:" << (*pLejano).y
        << endl;
   delete p1;
   delete p2;
-  delete pLejano;
 
   p1 = nullptr;
   p2 = nullptr;
-  pLejano = nullptr;
   return 0;
 }
 
