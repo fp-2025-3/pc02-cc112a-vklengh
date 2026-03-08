@@ -27,4 +27,20 @@
 
 ## Pregunta 4:
 
-### Pendiente
+![alt text](assets/pregunta04_1.png)
+
+![alt text](assets/pregunta04_2.png)
+
+![alt text](assets/pregunta04_3.png)
+
+![alt text](assets/pregunta04_4.png)
+
+![alt text](assets/pregunta04_5.png)
+
+![alt text](assets/pregunta04_6.png)
+
+![alt text](assets/pregunta04_7.png)
+
+![alt text](assets/pregunta04_8.png)
+
+![alt text](assets/pregunta04_9.png)

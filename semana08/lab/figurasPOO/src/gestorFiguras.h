@@ -1,7 +1,6 @@
 #ifndef GESTORFIGURA_H
 #define GESTORFIGURA_H
 #include "figura.h"
-#include <ctime>
 #include <string>
 
 class GestorFiguras {
