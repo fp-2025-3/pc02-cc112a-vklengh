@@ -1,0 +1,6 @@
+Juan 15
+Pedro 11
+Maria 18
+Jorge 9
+Enrique 11
+David 8
