@@ -126,23 +126,6 @@ void menu() {
 }
 
 int main() {
-  // Sensor *s[] = {new SensorCircular{"sc1", 10, 10, 2},
-  //                new SensorRectangular{"sr1", 15, 15, 6, 3}};
-  // SistemaSensores sistema(s, 2, 2);
-  // sistema.mostrarCapacidad();
-  // Sensor *s1 = new SensorCircular{"sc1", 10, 10, 2};
-  // Sensor *s2 = new SensorRectangular{"sr1", 15, 15, 6, 3};
-  // sistema.agregarSensor(s1);
-  // delete s1;
-  // sistema.agregarSensor(s2);
-  // delete s2;
-  // sistema.mostrarCapacidad();
-  // cout << sistema.getInfo(10, 10) << endl;
-  // Sensor *s3 = sistema.sensorMayorCobertura();
-  //
-  // cout << "El sensor con mayor cobertura es: " << endl;
-  // s3->imprimir();
-
   menu();
   return 0;
 }

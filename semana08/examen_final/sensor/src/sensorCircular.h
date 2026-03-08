@@ -1,7 +1,6 @@
 #ifndef SENSOR_CIRCULAR_H
 #define SENSOR_CIRCULAR_H
 #include "sensor.h"
-
 #include <string>
 
 class SensorCircular : public Sensor {

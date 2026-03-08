@@ -1,7 +1,5 @@
 #include "sensorRectangular.h"
-#include <cmath>
 #include <iostream>
-#include <iterator>
 
 SensorRectangular::SensorRectangular() : Sensor(), alto(0), ancho(0) {};
 

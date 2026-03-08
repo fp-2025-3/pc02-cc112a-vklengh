@@ -1,7 +1,6 @@
 #ifndef SENSOR_RECTANGULAR_H
 #define SENSOR_RECTANGULAR_H
 #include "sensor.h"
-
 #include <string>
 
 class SensorRectangular : public Sensor {
