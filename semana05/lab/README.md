@@ -1,0 +1,40 @@
+# SOLUCIONARIO EJERCICIOS LABORATORIO
+
+### Estudiante: Victor Hugo Cadillo Gutierrez
+### Codigo: 20255514D
+
+## SALIDAS DEL COMPILADOR
+
+### Pregunta 1:
+
+![alt text](assets/ejercicio01.png)
+
+### Pregunta 2:
+
+![alt text](assets/ejercicio02.png)
+
+### Pregunta 3:
+
+![alt text](assets/ejercicio03v2.png)
+
+### Pregunta 4:
+
+![alt text](assets/ejercicio04-1.png)
+
+![alt text](assets/ejercicio04-2.png)
+
+### Pregunta 5:
+
+![alt text](assets/ejercicio05-1.png)
+
+![alt text](assets/ejercicio05-2.png)
+
+![alt text](assets/ejercicio05-3.png)
+
+![alt text](assets/ejercicio05-4.png)
+
+![alt text](assets/ejercicio05-5.png)
+
+![alt text](assets/ejercicio05-6.png)
+
+![alt text](assets/ejercicio05-7.png)
